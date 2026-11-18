@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>TechLoan | Panel de control</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="dashboard-body dashboard-moderno">
+
+  <div class="app-layout" id="appLayout" hidden>
+
+    <aside class="sidebar">
+
+      <div class="sidebar-logo">
+        <span>TL</span>
+        <div>
+          <h2>TechLoan</h2>
+          <small>Gestión tecnológica</small>
+        </div>
+      </div>
+
+      <p class="sidebar-etiqueta">MENÚ PRINCIPAL</p>
+
+      <nav class="sidebar-menu">
+        <a href="dashboard.html" class="activo">
+          <span class="menu-icono">▦</span>
+          Panel principal
+        </a>
+
+        <a href="equipos.html">
+          <span class="menu-icono">▣</span>
+          Equipos
+        </a>
+
+        <a href="prestamos.html">
+          <span class="menu-icono">⇄</span>
+          Préstamos
+        </a>
+
+        <a href="reportes.html">
+          <span class="menu-icono">▥</span>
+          Reportes
+        </a>
+
+        <a href="incidencias.html">
+          <span class="menu-icono">⚑</span>
+          Incidencias
+        </a>
+
+        
+<a href="usuarios.html" id="menuUsuarios">
+  <span class="menu-icono">♙</span>
+  Usuarios
+</a>
+
+<a href="solicitudes-registro.html"
+   id="menuSolicitudesRegistro">
+  <span class="menu-icono">✉</span>
+  Solicitudes de registro
+</a>
+
+<a href="auditoria.html" id="menuAuditoria">
+  <span class="menu-icono">◷</span>
+  Auditoría
+</a>
+
+      </nav>
+
+      <div class="sidebar-inferior">
+        <div class="sidebar-sistema">
+          <span class="sistema-indicador"></span>
+          Sistema TechLoan
+        </div>
+
+        <button id="cerrarSesion" class="btn-salir">
+          Cerrar sesión
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+
+      <header class="dashboard-header">
+        <div>
+          <span class="dashboard-etiqueta">
+            VISTA GENERAL
+          </span>
+          <h1>Panel de control</h1>
+          <p>
+            Monitorea los equipos, préstamos y alertas
+            de tu institución.
+          </p>
+        </div>
+
+        <div class="usuario-header">
+          <div class="usuario-avatar">TL</div>
+          <div>
+            <strong id="nombreUsuario">Usuario</strong>
+            <small id="rolUsuario"></small>
+          </div>
+        </div>
+      </header>
+
+      <section class="dashboard-bienvenida">
+        <div>
+          <span class="bienvenida-etiqueta">
+            RESUMEN DEL SISTEMA
+          </span>
+          <h2>Bienvenido a TechLoan</h2>
+          <p>
+            Consulta el estado de los equipos y mantén
+            el control de los préstamos tecnológicos
+            desde un solo lugar.
+          </p>
+        </div>
+
+        <div class="bienvenida-decoracion">TL</div>
+      </section>
+
+      <section class="stats-grid">
+
+        <article class="stat-card">
+          <div class="stat-superior">
+            <span class="stat-icono stat-azul">▣</span>
+            <span class="stat-categoria">Inventario</span>
+          </div>
+          <p>Equipos registrados</p>
+          <h2 id="totalEquipos">0</h2>
+          <span class="stat-detalle">
+            Total de equipos del sistema
+          </span>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-superior">
+            <span class="stat-icono stat-verde">✓</span>
+            <span class="stat-categoria">Disponibilidad</span>
+          </div>
+          <p>Equipos disponibles</p>
+          <h2 id="equiposDisponibles">0</h2>
+          <span class="stat-detalle">
+            Listos para nuevos préstamos
+          </span>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-superior">
+            <span class="stat-icono stat-morado">⇄</span>
+            <span class="stat-categoria">Actividad</span>
+          </div>
+          <p>Préstamos activos</p>
+          <h2 id="prestamosActivos">0</h2>
+          <span class="stat-detalle">
+            Equipos actualmente prestados
+          </span>
+        </article>
+
+        <article class="stat-card alerta-card">
+          <div class="stat-superior">
+            <span class="stat-icono stat-rojo">!</span>
+            <span class="stat-categoria">Atención</span>
+          </div>
+          <p>Préstamos vencidos</p>
+          <h2 id="prestamosVencidos">0</h2>
+          <span class="stat-detalle">
+            Devoluciones fuera de plazo
+          </span>
+        </article>
+
+      </section>
+
+      <div class="dashboard-contenido-grid">
+
+        <section class="dashboard-panel panel-grafico">
+          <div class="panel-titulo-moderno">
+            <div>
+              <span class="panel-etiqueta">ESTADÍSTICAS</span>
+              <h2>Actividad de préstamos</h2>
+              <p>Préstamos registrados en los últimos 7 días</p>
+            </div>
+          </div>
+
+          <div class="grafico-contenedor">
+            <canvas id="graficoPrestamos"></canvas>
+          </div>
+        </section>
+
+        <section class="dashboard-panel panel-alertas">
+          <div class="panel-titulo-moderno">
+            <div>
+              <span class="panel-etiqueta">SEGUIMIENTO</span>
+              <h2>Alertas de devolución</h2>
+              <p>
+                Préstamos próximos a vencer o atrasados
+              </p>
+            </div>
+          </div>
+
+          <div id="listaAlertas">
+            Cargando alertas...
+          </div>
+        </section>
+
+      </div>
+
+      <p id="errorDashboard"
+         class="mensaje-error"
+         role="alert"></p>
+
+    </main>
+  </div>
+
+  <div id="panelAccesibilidad"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>

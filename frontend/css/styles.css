@@ -1,0 +1,5511 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  width: 58px;
+  height: 58px;
+  background: #2563eb;
+  color: white;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 auto 18px;
+}
+
+h1 {
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.subtitulo {
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: 2px solid #93c5fd;
+  border-color: #2563eb;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mensaje-error {
+  color: #dc2626;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+
+/* DASHBOARD */
+
+.dashboard-body {
+  background: #f4f7fb;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-layout[hidden] {
+  display: none;
+}
+
+.sidebar {
+  width: 240px;
+  background: #14243b;
+  color: white;
+  padding: 25px 18px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.sidebar-logo span {
+  background: #2563eb;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.sidebar-logo h2 {
+  font-size: 21px;
+  margin: 0;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-menu a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.activo {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-salir {
+  margin-top: auto;
+  background: #334155;
+}
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+  min-width: 0;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  text-align: left;
+  margin: 0 0 8px;
+}
+
+.dashboard-header p,
+.panel-descripcion {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.usuario-header {
+  background: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.usuario-header small {
+  color: #64748b;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+.stat-card p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0 0 15px;
+}
+
+.stat-card h2 {
+  font-size: 32px;
+  margin: 0;
+  color: #2563eb;
+}
+
+.alerta-card h2 {
+  color: #dc2626;
+}
+
+.dashboard-panel {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.dashboard-panel h2 {
+  font-size: 19px;
+  margin: 0 0 20px;
+}
+
+#graficoPrestamos {
+  max-height: 300px;
+}
+
+.alerta-item {
+  padding: 15px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.alerta-item:last-child {
+  border-bottom: none;
+}
+
+.alerta-item strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.alerta-item p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.alerta-vencida {
+  border-left: 4px solid #dc2626;
+}
+
+.alerta-proxima {
+  border-left: 4px solid #f59e0b;
+}
+
+@media (max-width: 1000px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .sidebar-menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .btn-salir {
+    margin-top: 20px;
+  }
+
+  .main-content {
+    padding: 18px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+
+/* MÓDULO DE EQUIPOS */
+
+.filtros-equipos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  align-items: center;
+}
+
+.filtros-equipos input,
+.filtros-equipos select {
+  width: 100%;
+  padding: 12px;
+  margin: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+.btn-secundario {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.btn-secundario:hover {
+  background: #cbd5e1;
+}
+
+.tabla-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.tabla-encabezado h2 {
+  margin: 0;
+}
+
+#totalRegistros {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.tabla-contenedor {
+  overflow-x: auto;
+}
+
+.tabla-equipos {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tabla-equipos th,
+.tabla-equipos td {
+  padding: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+.tabla-equipos th {
+  background: #f8fafc;
+  color: #475569;
+}
+
+.estado-etiqueta {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.estado-DISPONIBLE {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.estado-PRESTADO {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.estado-MANTENIMIENTO {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.estado-INACTIVO {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.paginacion button {
+  width: auto;
+  min-width: 110px;
+}
+
+.paginacion button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#infoPagina {
+  font-size: 14px;
+  color: #475569;
+}
+
+@media (max-width: 900px) {
+  .filtros-equipos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .filtros-equipos {
+    grid-template-columns: 1fr;
+  }
+
+  .tabla-encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .paginacion {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* FORMULARIO Y ACCIONES DE EQUIPOS */
+
+.btn-nuevo {
+  width: auto;
+  padding: 12px 18px;
+}
+
+.btn-accion {
+  width: auto;
+  padding: 8px 12px;
+  margin-right: 6px;
+  font-size: 13px;
+}
+
+.btn-editar {
+  background: #2563eb;
+}
+
+.btn-eliminar {
+  background: #dc2626;
+}
+
+.btn-eliminar:hover {
+  background: #b91c1c;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-contenido {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  border-radius: 14px;
+}
+
+.modal-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.modal-encabezado h2 {
+  margin: 0;
+}
+
+.btn-cerrar {
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  background: #e2e8f0;
+  color: #334155;
+  font-size: 24px;
+}
+
+.btn-cerrar:hover {
+  background: #cbd5e1;
+}
+
+.modal-botones {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-botones button {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .modal-contenido {
+    padding: 20px;
+  }
+
+  .modal-botones {
+    flex-direction: column;
+  }
+}
+
+
+/* MÓDULO DE PRÉSTAMOS */
+
+#formPrestamo select {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+}
+
+.prestamo-estado {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.prestamo-ACTIVO {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.prestamo-DEVUELTO {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.prestamo-vencido {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+
+/* DEVOLUCIONES */
+
+.detalle-devolucion {
+  background: #f1f5f9;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.detalle-devolucion p {
+  margin: 7px 0;
+  font-size: 14px;
+}
+
+#formDevolucion select,
+#formDevolucion textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+#formDevolucion textarea {
+  resize: vertical;
+}
+
+#contenedorDescripcion[hidden] {
+  display: none;
+}
+
+.btn-devolver {
+  background: #16a34a;
+  color: white;
+  padding: 9px 13px;
+  width: auto;
+  font-size: 13px;
+  border-radius: 7px;
+}
+
+.btn-devolver:hover {
+  background: #15803d;
+}
+
+
+/* MÓDULO DE USUARIOS */
+
+#formUsuario input,
+#formUsuario select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+.usuario-estado {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.usuario-activo {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.usuario-inactivo {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.btn-desactivar {
+  width: auto;
+  padding: 9px 13px;
+  background: #dc2626;
+  font-size: 13px;
+}
+
+.btn-desactivar:hover {
+  background: #b91c1c;
+}
+
+.btn-activar {
+  width: auto;
+  padding: 9px 13px;
+  background: #16a34a;
+  font-size: 13px;
+}
+
+.btn-activar:hover {
+  background: #15803d;
+}
+
+
+/* AUDITORÍA */
+
+.auditoria-filtros {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.auditoria-filtros input,
+.auditoria-filtros select {
+  padding: 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+.auditoria-filtros input {
+  flex: 1;
+  min-width: 220px;
+}
+
+.auditoria-filtros select {
+  min-width: 170px;
+}
+
+.auditoria-accion {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* DETALLES DE AUDITORÍA */
+
+.auditoria-detalle {
+  min-width: 220px;
+  max-width: 350px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.auditoria-detalle-titulo {
+  display: block;
+  color: #1e293b;
+  font-size: 13px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.auditoria-detalle-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 4px 0;
+}
+
+.auditoria-detalle-etiqueta {
+  color: #64748b;
+  font-weight: 500;
+  flex-shrink: 0;
+  text-transform: capitalize;
+}
+
+.auditoria-detalle-valor {
+  color: #0f172a;
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+
+/* COMPARACIÓN DE CAMBIOS EN AUDITORÍA */
+
+.auditoria-detalle:has(.auditoria-comparacion) {
+  max-width: 560px;
+  width: 100%;
+}
+
+.auditoria-comparacion {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.auditoria-bloque {
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.auditoria-bloque h4 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #334155;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.auditoria-bloque:last-child {
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.auditoria-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+
+.auditoria-campo span {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.auditoria-campo strong {
+  font-size: 12px;
+  color: #0f172a;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  .auditoria-comparacion {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* REPORTES Y ALERTAS */
+
+.reportes-resumen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.reporte-tarjeta {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.reporte-tarjeta h3 {
+  margin: 0 0 15px;
+  color: #475569;
+  font-size: 15px;
+}
+
+.reporte-tarjeta strong {
+  display: block;
+  font-size: 36px;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.reporte-tarjeta p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.reportes-filtros {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.reportes-filtros input,
+.reportes-filtros select {
+  padding: 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+}
+
+.reportes-filtros input {
+  flex: 1;
+  min-width: 220px;
+}
+
+.reporte-estado {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.reporte-vencido {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.reporte-proximo {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+@media (max-width: 768px) {
+  .reportes-resumen {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* HISTORIAL DE EQUIPOS */
+
+.historial-modal {
+  width: min(700px, 95vw);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.historial-equipo-info {
+  background: #f1f5f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.historial-equipo-info h3 {
+  margin: 0 0 5px;
+  color: #0f172a;
+}
+
+.historial-equipo-info p {
+  margin: 0;
+  color: #64748b;
+}
+
+.historial-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.historial-item {
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #2563eb;
+  border-radius: 10px;
+  background: white;
+}
+
+.historial-item.devuelto {
+  border-left-color: #16a34a;
+}
+
+.historial-item.activo {
+  border-left-color: #f59e0b;
+}
+
+.historial-item h4 {
+  margin: 0 0 10px;
+  color: #0f172a;
+}
+
+.historial-item p {
+  margin: 6px 0;
+  font-size: 13px;
+  color: #475569;
+}
+
+.historial-vacio {
+  text-align: center;
+  padding: 25px;
+  color: #64748b;
+}
+
+.btn-historial {
+  background: #475569;
+  color: white;
+  padding: 9px 13px;
+  width: auto;
+  border-radius: 7px;
+  font-size: 13px;
+  margin-right: 6px;
+}
+
+.btn-historial:hover {
+  background: #334155;
+}
+
+
+/* MÓDULO DE INCIDENCIAS */
+
+.incidencias-resumen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.incidencia-tarjeta {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.incidencia-tarjeta h3 {
+  margin: 0 0 15px;
+  color: #475569;
+  font-size: 15px;
+}
+
+.incidencia-tarjeta strong {
+  display: block;
+  font-size: 36px;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.incidencia-tarjeta p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.incidencias-filtros {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.incidencias-filtros input,
+.incidencias-filtros select {
+  padding: 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+}
+
+.incidencias-filtros input {
+  flex: 1;
+  min-width: 240px;
+}
+
+.incidencias-descripcion {
+  max-width: 300px;
+  min-width: 180px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+.incidencia-estado {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.incidencia-MANTENIMIENTO {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.incidencia-DISPONIBLE {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.incidencia-PRESTADO {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.incidencia-INACTIVO {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+@media (max-width: 768px) {
+  .incidencias-resumen {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* RECUPERACIÓN DE EQUIPOS */
+
+.btn-reparar {
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 3px;
+}
+
+.btn-reparar:hover {
+  background-color: #15803d;
+}
+
+#nombreEquipoReparacion {
+  margin: 15px 0;
+  font-weight: 600;
+  color: #334155;
+}
+
+#descripcionReparacion {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+#descripcionReparacion:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.btn-reparar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* PORTAL DE ESTUDIANTES Y DOCENTES */
+
+body.portal-usuario {
+  margin: 0;
+  min-height: 100vh;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-family: Arial, sans-serif;
+}
+
+.portal-header {
+  background: #0f172a;
+  color: white;
+  padding: 22px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.portal-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.portal-header p {
+  margin: 5px 0 0;
+  color: #cbd5e1;
+}
+
+.portal-header-acciones {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.portal-contenedor {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.portal-bienvenida {
+  margin-bottom: 25px;
+}
+
+.portal-bienvenida h2 {
+  margin-bottom: 8px;
+}
+
+.portal-bienvenida p {
+  color: #64748b;
+}
+
+.portal-resumen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.portal-tarjeta {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.portal-tarjeta h3 {
+  font-size: 15px;
+  color: #64748b;
+  margin: 0 0 14px;
+}
+
+.portal-tarjeta strong {
+  font-size: 34px;
+  color: #0f172a;
+}
+
+.portal-seccion {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.portal-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.portal-titulo h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.portal-filtros {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.portal-filtros input,
+.portal-filtros select {
+  padding: 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 14px;
+}
+
+.portal-filtros input {
+  flex: 1;
+  min-width: 180px;
+}
+
+.portal-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.portal-btn:hover {
+  background: #1d4ed8;
+}
+
+.portal-btn-secundario {
+  background: #e2e8f0;
+  color: #0f172a;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.portal-header .portal-btn-secundario {
+  background: #334155;
+  color: white;
+}
+
+.portal-btn:disabled,
+.portal-btn-secundario:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.portal-tabla-contenedor {
+  overflow-x: auto;
+}
+
+.portal-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.portal-tabla th,
+.portal-tabla td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.portal-tabla th {
+  background: #f8fafc;
+  color: #475569;
+}
+
+.portal-estado {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.portal-estado-disponible {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.portal-estado-prestado {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.portal-estado-mantenimiento {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.portal-estado-inactivo {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.portal-paginacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+  .portal-resumen {
+    grid-template-columns: 1fr;
+  }
+
+  .portal-seccion {
+    padding: 15px;
+  }
+
+  .portal-titulo {
+    flex-wrap: wrap;
+  }
+
+  .portal-header {
+    padding: 20px;
+  }
+}
+
+
+/* ==========================================
+   TECHLOAN - NUEVO DISEÑO DE LOGIN
+   ========================================== */
+
+body.login-page {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.login-page .login-container {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  min-height: 100vh;
+  padding: 0;
+  align-items: stretch;
+}
+
+/* PANEL IZQUIERDO */
+
+.login-presentacion {
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(59, 130, 246, 0.22),
+      transparent 38%
+    ),
+    linear-gradient(145deg, #0f172a, #172e56);
+  color: white;
+  padding: clamp(30px, 5vw, 75px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-presentacion::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50%;
+  right: -140px;
+  bottom: 8%;
+  pointer-events: none;
+}
+
+.login-marca {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 23px;
+  font-weight: 750;
+  position: relative;
+  z-index: 1;
+}
+
+.login-marca-icono,
+.login-icono {
+  display: grid;
+  place-items: center;
+  background: #2563eb;
+  color: white;
+  font-weight: 800;
+  border-radius: 13px;
+}
+
+.login-marca-icono {
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+}
+
+.login-presentacion-contenido {
+  max-width: 570px;
+  position: relative;
+  z-index: 1;
+}
+
+.login-etiqueta {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #93c5fd;
+  margin-bottom: 24px;
+}
+
+.login-presentacion h1 {
+  text-align: left;
+  font-size: clamp(36px, 4vw, 62px);
+  line-height: 1.13;
+  letter-spacing: -1.8px;
+  margin: 0 0 24px;
+}
+
+.login-presentacion h1 span {
+  color: #60a5fa;
+}
+
+.login-presentacion-contenido > p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #cbd5e1;
+  max-width: 490px;
+}
+
+.login-beneficios {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #e2e8f0;
+}
+
+.login-presentacion-pie {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* PANEL DERECHO */
+
+.login-formulario-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px 28px;
+  background: #ffffff;
+}
+
+.login-page .login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.login-icono {
+  width: 54px;
+  height: 54px;
+  font-size: 19px;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 20px rgba(37,99,235,0.18);
+}
+
+.login-bienvenida {
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.login-page .login-card h2 {
+  font-size: 36px;
+  letter-spacing: -1px;
+  margin: 12px 0 10px;
+  color: #0f172a;
+}
+
+.login-descripcion {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #64748b;
+  margin-bottom: 36px;
+}
+
+.login-campo {
+  margin-bottom: 22px;
+}
+
+.login-page .login-campo label {
+  font-size: 13px;
+  font-weight: 650;
+  color: #334155;
+  margin-bottom: 10px;
+}
+
+.login-page .login-campo input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  margin: 0;
+  background: #f8fafc;
+  border: 1px solid #dbe3ed;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-page .login-campo input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.10);
+  background: white;
+}
+
+.login-page #btnLogin {
+  width: 100%;
+  height: 52px;
+  margin-top: 8px;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.login-page #btnLogin:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.login-page #btnLogin:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.login-page #btnLogin:disabled {
+  opacity: 0.6;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.login-page .mensaje-error {
+  min-height: 20px;
+  text-align: left;
+}
+
+.login-ayuda {
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid #e2e8f0;
+  color: #94a3b8;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .login-page .login-container {
+    grid-template-columns: 1fr;
+  }
+
+  .login-presentacion {
+    padding: 30px 24px;
+    gap: 24px;
+  }
+
+  .login-presentacion-contenido {
+    max-width: 100%;
+  }
+
+  .login-presentacion h1 {
+    font-size: 32px;
+    letter-spacing: -0.7px;
+  }
+
+  .login-presentacion-contenido > p {
+    font-size: 14px;
+  }
+
+  .login-beneficios,
+  .login-presentacion-pie {
+    display: none;
+  }
+
+  .login-formulario-panel {
+    padding: 48px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-presentacion h1 {
+    font-size: 27px;
+  }
+
+  .login-etiqueta {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .login-page .login-card h2 {
+    font-size: 30px;
+  }
+
+  .login-formulario-panel {
+    padding: 38px 20px;
+  }
+}
+
+
+
+/* ==========================================
+   TECHLOAN - DASHBOARD MODERNO
+   ========================================== */
+
+.dashboard-moderno {
+  background: #f3f6fb;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.dashboard-moderno .sidebar {
+  width: 260px;
+  padding: 30px 18px;
+  background: #111f35;
+}
+
+.dashboard-moderno .sidebar-logo {
+  padding: 0 12px;
+  margin-bottom: 45px;
+}
+
+.dashboard-moderno .sidebar-logo span {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border-radius: 12px;
+}
+
+.dashboard-moderno .sidebar-logo h2 {
+  font-size: 22px;
+}
+
+.dashboard-moderno .sidebar-logo small {
+  display: block;
+  margin-top: 4px;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.sidebar-etiqueta {
+  margin: 0 12px 15px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #64748b;
+}
+
+.dashboard-moderno .sidebar-menu {
+  gap: 6px;
+}
+
+.dashboard-moderno .sidebar-menu a {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 14px 15px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.dashboard-moderno .sidebar-menu a:hover {
+  background: #243956;
+}
+
+.dashboard-moderno .sidebar-menu a.activo {
+  background: #2563eb;
+  color: white;
+}
+
+.menu-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  font-size: 19px;
+}
+
+.sidebar-inferior {
+  margin-top: auto;
+}
+
+.sidebar-sistema {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 15px 12px;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.sistema-indicador {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.dashboard-moderno .btn-salir {
+  margin-top: 8px;
+  background: #263750;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.dashboard-moderno .btn-salir:hover {
+  background: #334766;
+}
+
+/* CONTENIDO */
+
+.dashboard-moderno .main-content {
+  padding: 35px;
+}
+
+.dashboard-moderno .dashboard-header {
+  margin-bottom: 28px;
+}
+
+.dashboard-etiqueta,
+.panel-etiqueta {
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.dashboard-moderno .dashboard-header h1 {
+  margin: 8px 0;
+  font-size: 30px;
+  letter-spacing: -0.8px;
+}
+
+.dashboard-moderno .dashboard-header p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.dashboard-moderno .usuario-header {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 3px 12px rgba(15,23,42,0.03);
+}
+
+.usuario-avatar {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.dashboard-moderno .usuario-header strong {
+  display: block;
+  font-size: 13px;
+}
+
+.dashboard-moderno .usuario-header small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+}
+
+/* BIENVENIDA */
+
+.dashboard-bienvenida {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px 35px;
+  margin-bottom: 25px;
+  background: linear-gradient(110deg, #14243b, #214b86);
+  border-radius: 16px;
+  color: white;
+  overflow: hidden;
+}
+
+.bienvenida-etiqueta {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #93c5fd;
+}
+
+.dashboard-bienvenida h2 {
+  margin: 12px 0;
+  font-size: 26px;
+}
+
+.dashboard-bienvenida p {
+  max-width: 550px;
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.bienvenida-decoracion {
+  font-size: 90px;
+  font-weight: 900;
+  letter-spacing: -8px;
+  color: rgba(255,255,255,0.09);
+}
+
+/* TARJETAS */
+
+.dashboard-moderno .stats-grid {
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.dashboard-moderno .stat-card {
+  padding: 23px;
+  border: 1px solid #e7edf5;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(15,23,42,0.035);
+}
+
+.stat-superior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.stat-icono {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 11px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.stat-azul {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.stat-verde {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.stat-morado {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.stat-rojo {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.stat-categoria {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.dashboard-moderno .stat-card p {
+  margin: 0 0 10px;
+  font-size: 13px;
+}
+
+.dashboard-moderno .stat-card h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
+  color: #0f172a;
+}
+
+.dashboard-moderno .alerta-card h2 {
+  color: #dc2626;
+}
+
+.stat-detalle {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* GRÁFICO Y ALERTAS */
+
+.dashboard-contenido-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.dashboard-moderno .dashboard-panel {
+  padding: 27px;
+  border: 1px solid #e7edf5;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(15,23,42,0.035);
+}
+
+.panel-titulo-moderno {
+  margin-bottom: 25px;
+}
+
+.dashboard-moderno .panel-titulo-moderno h2 {
+  margin: 8px 0;
+  font-size: 19px;
+}
+
+.panel-titulo-moderno p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.grafico-contenedor {
+  position: relative;
+  height: 290px;
+}
+
+.dashboard-moderno #graficoPrestamos {
+  max-height: 290px;
+}
+
+.dashboard-moderno .alerta-item {
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.dashboard-moderno .alerta-vencida {
+  border-left: 4px solid #dc2626;
+}
+
+.dashboard-moderno .alerta-proxima {
+  border-left: 4px solid #f59e0b;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+  .dashboard-contenido-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-moderno .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard-moderno .app-layout {
+    flex-direction: column;
+  }
+
+  .dashboard-moderno .sidebar {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .dashboard-moderno .sidebar-logo {
+    margin-bottom: 22px;
+  }
+
+  .dashboard-moderno .sidebar-menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .dashboard-moderno .sidebar-menu a {
+    padding: 10px;
+  }
+
+  .dashboard-moderno .main-content {
+    padding: 18px;
+  }
+
+  .dashboard-moderno .dashboard-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dashboard-bienvenida {
+    padding: 24px;
+  }
+
+  .bienvenida-decoracion {
+    display: none;
+  }
+
+  .dashboard-moderno .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-moderno .dashboard-panel {
+    padding: 20px;
+  }
+}
+
+.dashboard-moderno .sidebar {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+
+.dashboard-moderno .sidebar-inferior {
+  padding-top: 24px;
+}
+
+@media (max-width: 700px) {
+  .dashboard-moderno .sidebar {
+    height: auto;
+    position: static;
+    overflow: visible;
+  }
+}
+
+
+/* ==========================================
+   TECHLOAN - GESTIÓN DE EQUIPOS
+   ========================================== */
+
+.equipos-moderno .main-content {
+  padding: 35px;
+}
+
+.equipos-moderno .dashboard-header {
+  margin-bottom: 30px;
+}
+
+.equipos-moderno .dashboard-panel {
+  background: #ffffff;
+  border: 1px solid #e7edf5;
+  border-radius: 15px;
+  padding: 27px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.035);
+}
+
+.equipos-seccion-titulo {
+  margin-bottom: 25px;
+}
+
+.equipos-seccion-titulo h2 {
+  font-size: 20px;
+  margin: 8px 0;
+  color: #0f172a;
+}
+
+.equipos-seccion-titulo p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* FILTROS */
+
+.equipos-moderno .filtros-equipos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  align-items: center;
+}
+
+.equipos-moderno .filtros-equipos input,
+.equipos-moderno .filtros-equipos select {
+  width: 100%;
+  min-width: 0;
+  height: 45px;
+  padding: 0 14px;
+  background: #f8fafc;
+  border: 1px solid #dbe3ed;
+  border-radius: 9px;
+  color: #334155;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.equipos-moderno .filtros-equipos input:focus,
+.equipos-moderno .filtros-equipos select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+.equipos-moderno .filtros-equipos button {
+  min-height: 45px;
+  padding: 0 18px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.equipos-moderno .filtros-equipos button[type="submit"] {
+  background: #2563eb;
+  color: white;
+}
+
+.equipos-moderno .filtros-equipos button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+/* TABLA */
+
+.equipos-moderno .tabla-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.equipos-moderno .tabla-encabezado h2 {
+  margin: 8px 0;
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.equipos-moderno #totalRegistros {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.equipos-moderno .btn-nuevo {
+  background: #2563eb;
+  border-radius: 9px;
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.equipos-moderno .tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e7edf5;
+  border-radius: 11px;
+}
+
+.equipos-moderno .tabla-equipos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.equipos-moderno .tabla-equipos thead {
+  background: #f8fafc;
+}
+
+.equipos-moderno .tabla-equipos th {
+  padding: 16px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.equipos-moderno .tabla-equipos td {
+  padding: 15px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.equipos-moderno .tabla-equipos tbody tr:hover {
+  background: #f8fbff;
+}
+
+.equipos-moderno .tabla-equipos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* BOTONES DE ACCIÓN */
+
+.equipos-moderno .btn-accion,
+.equipos-moderno .btn-historial,
+.equipos-moderno .btn-reparar {
+  padding: 8px 11px;
+  margin: 3px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.equipos-moderno .btn-historial {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.equipos-moderno .btn-editar {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.equipos-moderno .btn-eliminar {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.equipos-moderno .btn-reparar {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+/* PAGINACIÓN */
+
+.equipos-moderno .paginacion {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  margin-top: 24px;
+}
+
+.equipos-moderno #infoPagina {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.equipos-moderno .paginacion button {
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+
+.equipos-moderno .paginacion button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* MODALES */
+
+.equipos-moderno .modal-contenido {
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 24px 60px rgba(15,23,42,0.18);
+}
+
+.equipos-moderno .modal-encabezado {
+  margin-bottom: 22px;
+}
+
+.equipos-moderno .modal-encabezado h2 {
+  color: #0f172a;
+  font-size: 21px;
+}
+
+.equipos-moderno .modal-contenido input,
+.equipos-moderno .modal-contenido textarea {
+  border-radius: 9px;
+  border: 1px solid #dbe3ed;
+  background: #f8fafc;
+}
+
+.equipos-moderno .modal-contenido input:focus,
+.equipos-moderno .modal-contenido textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .equipos-moderno .filtros-equipos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .equipos-moderno .main-content {
+    padding: 18px;
+  }
+
+  .equipos-moderno .dashboard-panel {
+    padding: 20px;
+  }
+
+  .equipos-moderno .filtros-equipos {
+    grid-template-columns: 1fr;
+  }
+
+  .equipos-moderno .tabla-encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .equipos-moderno .paginacion {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.equipos-moderno .modal-overlay[hidden] {
+  display: none !important;
+}
+
+.equipos-moderno .app-layout[hidden] {
+  display: none !important;
+}
+
+/* Alinear botones de filtros de equipos */
+
+@media (min-width: 1101px) {
+  .equipos-moderno .filtros-equipos {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .equipos-moderno .filtros-equipos > :nth-child(-n+3) {
+    grid-column: span 2;
+  }
+
+  .equipos-moderno .filtros-equipos > :nth-child(4),
+  .equipos-moderno .filtros-equipos > :nth-child(5) {
+    grid-column: span 3;
+  }
+
+  .equipos-moderno .filtros-equipos > button {
+    grid-column: span 3;
+  }
+}
+
+
+/* ==========================================
+   TECHLOAN - GESTIÓN DE PRÉSTAMOS
+   ========================================== */
+
+.prestamos-moderno .main-content {
+  padding: 35px;
+}
+
+.prestamos-moderno .dashboard-header {
+  margin-bottom: 30px;
+}
+
+/* PANELES */
+
+.prestamos-moderno .dashboard-panel {
+  background: #ffffff;
+  border: 1px solid #e7edf5;
+  border-radius: 15px;
+  padding: 27px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.035);
+}
+
+.prestamos-moderno .tabla-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.prestamos-moderno .tabla-encabezado h2 {
+  font-size: 20px;
+  color: #0f172a;
+  margin: 8px 0;
+}
+
+.prestamos-moderno #totalPrestamos,
+.prestamos-moderno #totalSolicitudesPendientes {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* BOTONES PRINCIPALES */
+
+.prestamos-moderno .btn-nuevo {
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 9px;
+  padding: 11px 17px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.prestamos-moderno .btn-nuevo:hover {
+  background: #1d4ed8;
+}
+
+/* TABLAS */
+
+.prestamos-moderno .tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e7edf5;
+  border-radius: 11px;
+}
+
+.prestamos-moderno .tabla-equipos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.prestamos-moderno .tabla-equipos thead {
+  background: #f8fafc;
+}
+
+.prestamos-moderno .tabla-equipos th {
+  padding: 16px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.prestamos-moderno .tabla-equipos td {
+  padding: 15px 16px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.prestamos-moderno .tabla-equipos tbody tr:hover {
+  background: #f8fbff;
+}
+
+.prestamos-moderno .tabla-equipos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* BOTONES DE ACCIONES */
+
+.prestamos-moderno .tabla-equipos td button {
+  padding: 8px 12px;
+  margin: 3px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.prestamos-moderno .tabla-equipos .btn-nuevo {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.prestamos-moderno .tabla-equipos .btn-nuevo:hover {
+  background: #bbf7d0;
+}
+
+.prestamos-moderno .tabla-equipos .btn-secundario {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.prestamos-moderno .tabla-equipos .btn-secundario:hover {
+  background: #fee2e2;
+}
+
+.prestamos-moderno .btn-devolver {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.prestamos-moderno .btn-devolver:hover {
+  background: #dbeafe;
+}
+
+/* ETIQUETAS DE ESTADO */
+
+.prestamos-moderno .prestamo-estado {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.prestamos-moderno .prestamo-ACTIVO {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.prestamos-moderno .prestamo-DEVUELTO {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.prestamos-moderno .prestamo-vencido {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* FORMULARIOS EMERGENTES */
+
+.prestamos-moderno .modal-overlay[hidden],
+.prestamos-moderno .app-layout[hidden],
+.prestamos-moderno #contenedorDescripcion[hidden] {
+  display: none !important;
+}
+
+.prestamos-moderno .modal-contenido {
+  border-radius: 16px;
+  padding: 28px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(15,23,42,0.18);
+}
+
+.prestamos-moderno .modal-encabezado {
+  margin-bottom: 22px;
+}
+
+.prestamos-moderno .modal-encabezado h2 {
+  color: #0f172a;
+  font-size: 21px;
+}
+
+.prestamos-moderno .modal-contenido input,
+.prestamos-moderno .modal-contenido select,
+.prestamos-moderno .modal-contenido textarea {
+  width: 100%;
+  border-radius: 9px;
+  border: 1px solid #dbe3ed;
+  background: #f8fafc;
+  font-family: inherit;
+}
+
+.prestamos-moderno .modal-contenido input:focus,
+.prestamos-moderno .modal-contenido select:focus,
+.prestamos-moderno .modal-contenido textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+}
+
+.prestamos-moderno .modal-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.prestamos-moderno .modal-botones button {
+  padding: 11px 18px;
+  border-radius: 9px;
+  font-weight: 650;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .prestamos-moderno .main-content {
+    padding: 18px;
+  }
+
+  .prestamos-moderno .dashboard-panel {
+    padding: 20px;
+  }
+
+  .prestamos-moderno .tabla-encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .prestamos-moderno .tabla-encabezado button {
+    width: 100%;
+  }
+
+  .prestamos-moderno .modal-contenido {
+    padding: 20px;
+  }
+}
+
+/* Mejoras de tablas de préstamos */
+
+.prestamos-moderno .tabla-contenedor {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.prestamos-moderno .tabla-equipos {
+  min-width: 850px;
+}
+
+.prestamos-moderno .tabla-equipos td {
+  line-height: 1.5;
+}
+
+.prestamos-moderno .tabla-equipos td:last-child {
+  white-space: nowrap;
+}
+
+.prestamos-moderno .tabla-equipos button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+
+/* ==========================================
+   TECHLOAN - GESTIÓN DE USUARIOS
+   ========================================== */
+
+.usuarios-moderno .main-content {
+  padding: 35px;
+}
+
+.usuarios-moderno .dashboard-header {
+  margin-bottom: 30px;
+}
+
+/* PANEL PRINCIPAL */
+
+.usuarios-moderno .dashboard-panel {
+  background: #ffffff;
+  border: 1px solid #e7edf5;
+  border-radius: 15px;
+  padding: 27px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 18px rgba(15,23,42,0.035);
+}
+
+.usuarios-moderno .tabla-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.usuarios-moderno .tabla-encabezado h2 {
+  margin: 8px 0;
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.usuarios-moderno #totalUsuarios {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* BOTÓN NUEVO USUARIO */
+
+.usuarios-moderno .btn-nuevo {
+  background: #2563eb;
+  color: white;
+  border-radius: 9px;
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.usuarios-moderno .btn-nuevo:hover {
+  background: #1d4ed8;
+}
+
+/* TABLA */
+
+.usuarios-moderno .tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e7edf5;
+  border-radius: 11px;
+}
+
+.usuarios-moderno .tabla-equipos {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.usuarios-moderno .tabla-equipos thead {
+  background: #f8fafc;
+}
+
+.usuarios-moderno .tabla-equipos th {
+  padding: 16px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.usuarios-moderno .tabla-equipos td {
+  padding: 15px 16px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.usuarios-moderno .tabla-equipos tbody tr:hover {
+  background: #f8fbff;
+}
+
+.usuarios-moderno .tabla-equipos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ESTADOS */
+
+.usuarios-moderno .usuario-estado {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.usuarios-moderno .usuario-activo {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.usuarios-moderno .usuario-inactivo {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* BOTONES DE ACTIVACIÓN */
+
+.usuarios-moderno .btn-activar,
+.usuarios-moderno .btn-desactivar {
+  padding: 9px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.usuarios-moderno .btn-activar {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.usuarios-moderno .btn-activar:hover {
+  background: #bbf7d0;
+}
+
+.usuarios-moderno .btn-desactivar {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.usuarios-moderno .btn-desactivar:hover {
+  background: #fee2e2;
+}
+
+/* FORMULARIO EMERGENTE */
+
+.usuarios-moderno .modal-overlay[hidden],
+.usuarios-moderno .app-layout[hidden] {
+  display: none !important;
+}
+
+.usuarios-moderno .modal-contenido {
+  border-radius: 16px;
+  padding: 28px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(15,23,42,0.18);
+}
+
+.usuarios-moderno .modal-encabezado {
+  margin-bottom: 22px;
+}
+
+.usuarios-moderno .modal-encabezado h2 {
+  font-size: 21px;
+  color: #0f172a;
+}
+
+.usuarios-moderno .modal-contenido input,
+.usuarios-moderno .modal-contenido select {
+  width: 100%;
+  min-height: 45px;
+  padding: 10px 14px;
+  border: 1px solid #dbe3ed;
+  border-radius: 9px;
+  background: #f8fafc;
+  color: #334155;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.usuarios-moderno .modal-contenido input:focus,
+.usuarios-moderno .modal-contenido select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+}
+
+.usuarios-ayuda-roles {
+  margin: 20px 0;
+  padding: 14px 16px;
+  border-left: 3px solid #2563eb;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.usuarios-ayuda-roles strong {
+  color: #1d4ed8;
+}
+
+.usuarios-moderno .modal-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.usuarios-moderno .modal-botones button {
+  padding: 11px 18px;
+  border-radius: 9px;
+  font-weight: 650;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .usuarios-moderno .main-content {
+    padding: 18px;
+  }
+
+  .usuarios-moderno .dashboard-panel {
+    padding: 20px;
+  }
+
+  .usuarios-moderno .tabla-encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuarios-moderno .tabla-encabezado .btn-nuevo {
+    width: 100%;
+  }
+
+  .usuarios-moderno .modal-contenido {
+    padding: 20px;
+  }
+}
+
+
+/* ==========================================
+   TECHLOAN - REPORTES MODERNOS
+   ========================================== */
+
+.reportes-moderno .main-content {
+  padding: 35px;
+}
+
+.reportes-moderno .dashboard-header {
+  margin-bottom: 30px;
+}
+
+/* TARJETAS DE RESUMEN */
+
+.reportes-moderno .reportes-resumen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.reportes-moderno .reporte-tarjeta {
+  background: #ffffff;
+  padding: 27px;
+  border: 1px solid #e7edf5;
+  border-radius: 15px;
+  box-shadow: 0 4px 18px rgba(15,23,42,0.035);
+}
+
+.reporte-tarjeta-superior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.reporte-icono {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.reporte-icono-rojo {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.reporte-icono-amarillo {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.reporte-categoria {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.reportes-moderno .reporte-tarjeta h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 650;
+  color: #475569;
+}
+
+.reportes-moderno .reporte-tarjeta strong {
+  display: block;
+  font-size: 38px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.reportes-moderno .reporte-tarjeta-vencidos strong {
+  color: #dc2626;
+}
+
+.reportes-moderno .reporte-tarjeta-proximos strong {
+  color: #d97706;
+}
+
+.reportes-moderno .reporte-tarjeta p {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* PANEL DE ALERTAS */
+
+.reportes-moderno .dashboard-panel {
+  padding: 27px;
+  margin-bottom: 24px;
+  background: #ffffff;
+  border: 1px solid #e7edf5;
+  border-radius: 15px;
+  box-shadow: 0 4px 18px rgba(15,23,42,0.035);
+}
+
+.reportes-moderno .tabla-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.reportes-moderno .tabla-encabezado h2 {
+  margin: 8px 0;
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.reportes-moderno #totalAlertas {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.reportes-moderno .btn-nuevo {
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 9px;
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.reportes-moderno .btn-nuevo:hover {
+  background: #1d4ed8;
+}
+
+/* FILTROS */
+
+.reportes-moderno .reportes-filtros {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.reporte-campo-busqueda,
+.reporte-campo-filtro {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.reportes-moderno .reportes-filtros label {
+  color: #334155;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.reportes-moderno .reportes-filtros input,
+.reportes-moderno .reportes-filtros select {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #dbe3ed;
+  border-radius: 9px;
+  background: #f8fafc;
+  color: #334155;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.reportes-moderno .reportes-filtros input:focus,
+.reportes-moderno .reportes-filtros select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+}
+
+/* TABLA */
+
+.reportes-moderno .tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e7edf5;
+  border-radius: 11px;
+}
+
+.reportes-moderno .tabla-equipos {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.reportes-moderno .tabla-equipos thead {
+  background: #f8fafc;
+}
+
+.reportes-moderno .tabla-equipos th {
+  padding: 16px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.reportes-moderno .tabla-equipos td {
+  padding: 15px 16px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.reportes-moderno .tabla-equipos tbody tr:hover {
+  background: #f8fbff;
+}
+
+.reportes-moderno .tabla-equipos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ETIQUETAS DE ESTADO */
+
+.reportes-moderno .reporte-estado {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.reportes-moderno .reporte-vencido {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.reportes-moderno .reporte-proximo {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .reportes-moderno .main-content {
+    padding: 18px;
+  }
+
+  .reportes-moderno .reportes-resumen,
+  .reportes-moderno .reportes-filtros {
+    grid-template-columns: 1fr;
+  }
+
+  .reportes-moderno .dashboard-panel,
+  .reportes-moderno .reporte-tarjeta {
+    padding: 20px;
+  }
+
+  .reportes-moderno .tabla-encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reportes-moderno .tabla-encabezado .btn-nuevo {
+    width: 100%;
+  }
+}
+
+
+/* ==========================================
+   TECHLOAN - INCIDENCIAS MODERNAS
+   ========================================== */
+
+.incidencias-moderno .main-content {
+  padding: 35px;
+}
+
+.incidencias-moderno .dashboard-header {
+  margin-bottom: 30px;
+}
+
+/* TARJETAS DE RESUMEN */
+
+.incidencias-moderno .incidencias-resumen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.incidencias-moderno .incidencia-tarjeta {
+  background: #ffffff;
+  padding: 27px;
+  border: 1px solid #e7edf5;
+  border-radius: 15px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.035);
+}
+
+.incidencias-moderno .incidencia-tarjeta-superior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.incidencias-moderno .incidencia-icono {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.incidencias-moderno .incidencia-icono-azul {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.incidencias-moderno .incidencia-icono-naranja {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.incidencias-moderno .incidencia-categoria {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: right;
+}
+
+.incidencias-moderno .incidencia-tarjeta h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 650;
+  color: #475569;
+}
+
+.incidencias-moderno .incidencia-tarjeta strong {
+  display: block;
+  font-size: 38px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.incidencias-moderno .incidencia-tarjeta-total strong {
+  color: #2563eb;
+}
+
+.incidencias-moderno .incidencia-tarjeta-mantenimiento strong {
+  color: #d97706;
+}
+
+.incidencias-moderno .incidencia-tarjeta p {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* PANEL PRINCIPAL */
+
+.incidencias-moderno .dashboard-panel {
+  padding: 27px;
+  margin-bottom: 24px;
+  background: #ffffff;
+  border: 1px solid #e7edf5;
+  border-radius: 15px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.035);
+}
+
+.incidencias-moderno .tabla-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.incidencias-moderno .tabla-encabezado h2 {
+  margin: 8px 0;
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.incidencias-moderno #totalRegistrosIncidencias {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.incidencias-moderno .btn-nuevo {
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 9px;
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.incidencias-moderno .btn-nuevo:hover {
+  background: #1d4ed8;
+}
+
+/* FILTROS */
+
+.incidencias-moderno .incidencias-filtros {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.incidencias-moderno .incidencia-campo-busqueda,
+.incidencias-moderno .incidencia-campo-filtro {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.incidencias-moderno .incidencias-filtros label {
+  color: #334155;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.incidencias-moderno .incidencias-filtros input,
+.incidencias-moderno .incidencias-filtros select {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #dbe3ed;
+  border-radius: 9px;
+  background: #f8fafc;
+  color: #334155;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.incidencias-moderno .incidencias-filtros input:focus,
+.incidencias-moderno .incidencias-filtros select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+/* TABLA */
+
+.incidencias-moderno .tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e7edf5;
+  border-radius: 11px;
+  scrollbar-width: thin;
+}
+
+.incidencias-moderno .tabla-equipos {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.incidencias-moderno .tabla-equipos thead {
+  background: #f8fafc;
+}
+
+.incidencias-moderno .tabla-equipos th {
+  padding: 16px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.incidencias-moderno .tabla-equipos td {
+  padding: 15px 16px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+.incidencias-moderno .tabla-equipos tbody tr:hover {
+  background: #f8fbff;
+}
+
+.incidencias-moderno .tabla-equipos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* DESCRIPCIÓN DE DAÑOS */
+
+.incidencias-moderno .incidencias-descripcion {
+  min-width: 200px;
+  max-width: 320px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  color: #475569;
+}
+
+/* ESTADOS DE EQUIPOS */
+
+.incidencias-moderno .incidencia-estado {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.incidencias-moderno .incidencia-MANTENIMIENTO {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.incidencias-moderno .incidencia-DISPONIBLE {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.incidencias-moderno .incidencia-PRESTADO {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.incidencias-moderno .incidencia-INACTIVO {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .incidencias-moderno .main-content {
+    padding: 18px;
+  }
+
+  .incidencias-moderno .incidencias-resumen,
+  .incidencias-moderno .incidencias-filtros {
+    grid-template-columns: 1fr;
+  }
+
+  .incidencias-moderno .dashboard-panel,
+  .incidencias-moderno .incidencia-tarjeta {
+    padding: 20px;
+  }
+
+  .incidencias-moderno .tabla-encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .incidencias-moderno .tabla-encabezado .btn-nuevo {
+    width: 100%;
+  }
+}
+
+
+
+/* ==========================================
+   TECHLOAN - CORRECCIÓN DEL PANEL DE INCIDENCIAS
+   ========================================== */
+
+body.incidencias-moderno .main-content > .dashboard-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+  gap: 0;
+}
+
+/* Encabezado */
+body.incidencias-moderno .dashboard-panel .tabla-encabezado {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 25px;
+}
+
+body.incidencias-moderno .tabla-encabezado > div {
+  flex: 1;
+  min-width: 0;
+}
+
+body.incidencias-moderno .tabla-encabezado .btn-nuevo {
+  width: auto;
+  flex-shrink: 0;
+}
+
+/* Filtros */
+body.incidencias-moderno .dashboard-panel .incidencias-filtros {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+  margin: 0 0 25px;
+}
+
+body.incidencias-moderno .incidencias-filtros > div {
+  min-width: 0;
+  width: 100%;
+}
+
+body.incidencias-moderno .incidencias-filtros input,
+body.incidencias-moderno .incidencias-filtros select {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+/* Tabla */
+body.incidencias-moderno .dashboard-panel .tabla-contenedor {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+body.incidencias-moderno .tabla-contenedor .tabla-equipos {
+  width: 100%;
+  min-width: 1050px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  body.incidencias-moderno .dashboard-panel .tabla-encabezado {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.incidencias-moderno .dashboard-panel .incidencias-filtros {
+    grid-template-columns: 1fr;
+  }
+
+  body.incidencias-moderno .tabla-encabezado .btn-nuevo {
+    width: 100%;
+  }
+}
+
+
+
+/* ==========================================
+   TECHLOAN - AUDITORÍA MODERNA
+   ========================================== */
+
+.auditoria-moderno .main-content {
+  padding: 35px;
+  min-width: 0;
+}
+
+.auditoria-moderno .dashboard-header {
+  margin-bottom: 30px;
+}
+
+/* PANEL PRINCIPAL */
+
+body.auditoria-moderno .main-content > .dashboard-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+  padding: 27px;
+  gap: 0;
+  background: #ffffff;
+  border: 1px solid #e7edf5;
+  border-radius: 15px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.035);
+}
+
+/* ENCABEZADO */
+
+body.auditoria-moderno .dashboard-panel > .tabla-encabezado {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.auditoria-moderno .tabla-encabezado > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.auditoria-moderno .tabla-encabezado h2 {
+  margin: 8px 0;
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.auditoria-moderno #totalAuditoria {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.auditoria-moderno .btn-nuevo {
+  flex-shrink: 0;
+  padding: 12px 20px;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auditoria-moderno .btn-nuevo:hover {
+  background: #1d4ed8;
+}
+
+/* FILTROS */
+
+body.auditoria-moderno .dashboard-panel > .auditoria-filtros {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  width: 100%;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.auditoria-moderno .auditoria-campo-busqueda,
+.auditoria-moderno .auditoria-campo-filtro {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.auditoria-moderno .auditoria-filtros label {
+  color: #334155;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.auditoria-moderno .auditoria-filtros input,
+.auditoria-moderno .auditoria-filtros select {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #dbe3ed;
+  border-radius: 9px;
+  background: #f8fafc;
+  color: #334155;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.auditoria-moderno .auditoria-filtros input:focus,
+.auditoria-moderno .auditoria-filtros select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+/* TABLA */
+
+body.auditoria-moderno .dashboard-panel > .tabla-contenedor {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid #e7edf5;
+  border-radius: 11px;
+}
+
+.auditoria-moderno .tabla-equipos {
+  width: 100%;
+  min-width: 1100px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.auditoria-moderno .tabla-equipos thead {
+  background: #f8fafc;
+}
+
+.auditoria-moderno .tabla-equipos th {
+  padding: 16px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.auditoria-moderno .tabla-equipos td {
+  padding: 15px 16px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.auditoria-moderno .tabla-equipos tbody tr:hover {
+  background: #f8fbff;
+}
+
+.auditoria-moderno .tabla-equipos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ETIQUETAS DE ACCIONES */
+
+.auditoria-moderno .auditoria-accion {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 11px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+/* DETALLES DE AUDITORÍA */
+
+.auditoria-moderno .auditoria-detalle {
+  min-width: 230px;
+  max-width: 430px;
+  color: #475569;
+  font-size: 12px;
+}
+
+.auditoria-moderno .auditoria-detalle-titulo {
+  display: block;
+  margin-bottom: 10px;
+  color: #0f172a;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.auditoria-moderno .auditoria-detalle-fila,
+.auditoria-moderno .auditoria-campo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 5px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.auditoria-moderno .auditoria-detalle-etiqueta,
+.auditoria-moderno .auditoria-campo > span {
+  color: #64748b;
+  font-size: 11px;
+}
+
+.auditoria-moderno .auditoria-detalle-valor,
+.auditoria-moderno .auditoria-campo > strong {
+  color: #334155;
+  font-size: 11px;
+  font-weight: 650;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* COMPARACIÓN ANTES Y DESPUÉS */
+
+.auditoria-moderno .auditoria-comparacion {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.auditoria-moderno .auditoria-bloque {
+  min-width: 0;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+}
+
+.auditoria-moderno .auditoria-bloque h4 {
+  margin: 0 0 10px;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .auditoria-moderno .main-content {
+    padding: 18px;
+  }
+
+  body.auditoria-moderno .main-content > .dashboard-panel {
+    padding: 20px;
+  }
+
+  body.auditoria-moderno .dashboard-panel > .tabla-encabezado {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.auditoria-moderno .dashboard-panel > .auditoria-filtros {
+    grid-template-columns: 1fr;
+  }
+
+  .auditoria-moderno .tabla-encabezado .btn-nuevo {
+    width: 100%;
+  }
+
+  .auditoria-moderno .auditoria-comparacion {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================
+   TECHLOAN - PORTAL MODERNO DE USUARIOS
+   ========================================== */
+
+.portal-moderno {
+  background: #f2f5fb;
+  color: #14213d;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* ENCABEZADO */
+
+.portal-moderno .portal-header {
+  background: #101d34;
+  color: white;
+  padding: 24px max(32px, calc((100% - 1200px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.portal-moderno .portal-marca,
+.portal-moderno .portal-header-acciones,
+.portal-moderno .portal-perfil {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.portal-moderno .portal-logo,
+.portal-moderno .portal-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #2563eb;
+  color: white;
+  font-weight: 800;
+  border-radius: 12px;
+}
+
+.portal-moderno .portal-logo {
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+}
+
+.portal-moderno .portal-avatar {
+  width: 40px;
+  height: 40px;
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.portal-moderno .portal-marca h1 {
+  font-size: 23px;
+  margin: 0;
+  color: white;
+}
+
+.portal-moderno .portal-marca p,
+.portal-moderno .portal-perfil small {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #a9b9d5;
+}
+
+.portal-moderno .portal-perfil strong,
+.portal-moderno .portal-perfil small {
+  display: block;
+}
+
+.portal-moderno .portal-btn-secundario {
+  width: auto;
+  padding: 12px 20px;
+  border: 1px solid #40516d;
+  border-radius: 9px;
+  background: #263956;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.portal-moderno .portal-contenido {
+  width: min(1200px, calc(100% - 48px));
+  max-width: 1200px;
+  margin: 32px auto;
+}
+
+/* BIENVENIDA */
+
+.portal-moderno .portal-bienvenida {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #14213d, #244b86);
+  border-radius: 16px;
+  padding: 38px 42px;
+  margin-bottom: 24px;
+  color: white;
+}
+
+.portal-moderno .portal-etiqueta,
+.portal-moderno .portal-panel-etiqueta {
+  display: block;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.portal-moderno .portal-bienvenida .portal-etiqueta {
+  color: #93c5fd;
+}
+
+.portal-moderno .portal-bienvenida h2 {
+  font-size: 30px;
+  margin: 0 0 14px;
+  color: white;
+}
+
+.portal-moderno .portal-bienvenida p {
+  max-width: 630px;
+  color: #dce8ff;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.portal-moderno .portal-bienvenida-decoracion {
+  position: absolute;
+  right: 45px;
+  top: 35px;
+  font-size: 110px;
+  font-weight: 900;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* TARJETAS DE RESUMEN */
+
+.portal-moderno .portal-resumen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.portal-moderno .portal-tarjeta {
+  background: white;
+  border: 1px solid #e0e8f4;
+  border-radius: 14px;
+  padding: 26px;
+  min-width: 0;
+}
+
+.portal-moderno .portal-tarjeta-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.portal-moderno .portal-icono {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 23px;
+}
+
+.portal-moderno .portal-icono-azul {
+  color: #2563eb;
+  background: #dbeafe;
+}
+
+.portal-moderno .portal-icono-verde {
+  color: #059669;
+  background: #d1fae5;
+}
+
+.portal-moderno .portal-categoria {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #91a1bd;
+}
+
+.portal-moderno .portal-tarjeta h3 {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: #344767;
+}
+
+.portal-moderno .portal-tarjeta strong {
+  display: block;
+  font-size: 36px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.portal-moderno .portal-tarjeta p {
+  font-size: 12px;
+  color: #8293b1;
+  margin: 12px 0 0;
+}
+
+/* SECCIONES */
+
+.portal-moderno .portal-seccion {
+  background: white;
+  border: 1px solid #e0e8f4;
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 24px;
+  min-width: 0;
+}
+
+.portal-moderno .portal-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.portal-moderno .portal-titulo > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.portal-moderno .portal-titulo h2 {
+  font-size: 21px;
+  margin: 0;
+  color: #14213d;
+}
+
+.portal-moderno .portal-titulo .portal-btn {
+  width: auto;
+  flex: 0 0 auto;
+  min-width: 110px;
+}
+
+/* BOTONES */
+
+.portal-moderno .portal-btn {
+  background: #2563eb;
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.portal-moderno .portal-btn:hover {
+  background: #1d4ed8;
+}
+
+.portal-moderno button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* CAMPOS Y FORMULARIOS */
+
+.portal-moderno input,
+.portal-moderno select,
+.portal-moderno textarea {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid #d5e0ef;
+  border-radius: 9px;
+  background: #f8fafc;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  color: #14213d;
+}
+
+.portal-moderno textarea {
+  min-height: 105px;
+  resize: vertical;
+}
+
+.portal-moderno input:focus,
+.portal-moderno select:focus,
+.portal-moderno textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px #2563eb20;
+}
+
+.portal-moderno label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #344767;
+}
+
+/* TABLAS */
+
+.portal-moderno .tabla-contenedor {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.portal-moderno .tabla-equipos {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.portal-moderno .tabla-equipos th {
+  background: #f8fafc;
+  color: #526786;
+  font-size: 12px;
+  text-align: left;
+  padding: 15px;
+  white-space: nowrap;
+}
+
+.portal-moderno .tabla-equipos td {
+  padding: 15px;
+  font-size: 13px;
+  border-bottom: 1px solid #e8edf5;
+}
+
+.portal-moderno .tabla-equipos tr:hover td {
+  background: #f8fbff;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .portal-moderno .portal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px;
+  }
+
+  .portal-moderno .portal-header-acciones {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .portal-moderno .portal-contenido {
+    width: calc(100% - 28px);
+    margin: 20px auto;
+  }
+
+  .portal-moderno .portal-bienvenida {
+    padding: 28px 24px;
+  }
+
+  .portal-moderno .portal-bienvenida h2 {
+    font-size: 24px;
+  }
+
+  .portal-moderno .portal-resumen {
+    grid-template-columns: 1fr;
+  }
+
+  .portal-moderno .portal-seccion {
+    padding: 20px;
+  }
+
+  .portal-moderno .portal-titulo {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+
+/* ==========================================
+   TECHLOAN - FORMULARIO DE SOLICITUD
+   ========================================== */
+
+.portal-moderno .portal-seccion form {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Campos de los formularios */
+
+.portal-moderno .portal-seccion form input,
+.portal-moderno .portal-seccion form select,
+.portal-moderno .portal-seccion form textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Campo del motivo */
+
+.portal-moderno .portal-seccion form textarea {
+  display: block;
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Espaciado entre campos */
+
+.portal-moderno .portal-seccion form label {
+  margin-bottom: 9px;
+}
+
+.portal-moderno .portal-seccion form > div {
+  min-width: 0;
+}
+
+/* Botón para enviar la solicitud */
+
+.portal-moderno .portal-seccion form button[type="submit"] {
+  width: 100%;
+  margin-top: 14px;
+}
+
+/* Adaptación para pantallas pequeñas */
+
+@media (max-width: 768px) {
+  .portal-moderno .portal-seccion form input,
+  .portal-moderno .portal-seccion form select,
+  .portal-moderno .portal-seccion form textarea {
+    width: 100%;
+  }
+}
+
+
+/* ==========================================
+   TECHLOAN - AJUSTES FINALES DEL FORMULARIO
+   ========================================== */
+
+/* Distribución de los campos */
+
+.portal-moderno .portal-seccion form select,
+.portal-moderno .portal-seccion form input[type="datetime-local"] {
+  width: 100%;
+  min-height: 46px;
+}
+
+/* Evitar controles demasiado pequeños */
+
+.portal-moderno .portal-seccion form select {
+  min-width: 220px;
+}
+
+.portal-moderno .portal-seccion form input[type="datetime-local"] {
+  min-width: 220px;
+}
+
+/* Mejorar la presentación de los campos */
+
+.portal-moderno .portal-seccion form label {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+/* En pantallas pequeñas */
+
+@media (max-width: 768px) {
+  .portal-moderno .portal-seccion form select,
+  .portal-moderno .portal-seccion form input[type="datetime-local"] {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+
+
+/* ==========================================
+   TECHLOAN - PORTAL CON MENÚ LATERAL
+   ETAPA 29
+   ========================================== */
+
+/* ESTRUCTURA PRINCIPAL */
+
+.portal-moderno .portal-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  align-items: stretch;
+}
+
+.portal-moderno .portal-area-principal {
+  flex: 1;
+  min-width: 0;
+  background: #f2f5fb;
+}
+
+/* MENÚ LATERAL */
+
+.portal-moderno .portal-sidebar {
+  width: 260px;
+  flex: 0 0 260px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 18px;
+  background: #111f35;
+  color: #ffffff;
+  overflow-y: auto;
+}
+
+/* MARCA */
+
+.portal-moderno .portal-sidebar-marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 12px;
+  margin-bottom: 45px;
+}
+
+.portal-moderno .portal-sidebar-marca
+.portal-logo {
+  width: 46px;
+  height: 46px;
+  background: #2563eb;
+  border-radius: 12px;
+}
+
+.portal-moderno .portal-sidebar-marca h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.portal-moderno .portal-sidebar-marca p {
+  margin: 5px 0 0;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* NAVEGACIÓN */
+
+.portal-moderno .portal-sidebar-etiqueta {
+  margin: 0 12px 15px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #94a3b8;
+}
+
+.portal-moderno .portal-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.portal-moderno .portal-menu-opcion {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 14px 15px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #cbd5e1;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.portal-moderno .portal-menu-opcion span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.portal-moderno .portal-menu-opcion:hover {
+  background: #243956;
+  color: #ffffff;
+}
+
+.portal-moderno .portal-menu-opcion.activo {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.portal-moderno .portal-menu-opcion:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+/* PARTE INFERIOR DEL MENÚ */
+
+.portal-moderno .portal-sidebar-inferior {
+  margin-top: auto;
+  padding: 20px 12px 5px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ENCABEZADO DEL CONTENIDO */
+
+.portal-moderno .portal-area-principal
+.portal-header {
+  background: #ffffff;
+  color: #14213d;
+  padding: 20px 35px;
+  border-bottom: 1px solid #e0e8f4;
+}
+
+.portal-moderno .portal-area-principal
+.portal-marca h1 {
+  color: #14213d;
+  text-align: left;
+}
+
+.portal-moderno .portal-area-principal
+.portal-marca p {
+  color: #64748b;
+}
+
+.portal-moderno .portal-area-principal
+.portal-perfil small {
+  color: #64748b;
+}
+
+.portal-moderno .portal-area-principal
+.portal-btn-secundario {
+  background: #e2e8f0;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.portal-moderno .portal-area-principal
+.portal-btn-secundario:hover {
+  background: #cbd5e1;
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.portal-moderno .portal-area-principal
+.portal-contenedor {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 32px 35px;
+}
+
+/* MOSTRAR UNA SOLA SECCIÓN */
+
+.portal-moderno .portal-vista[hidden] {
+  display: none !important;
+}
+
+.portal-moderno .portal-vista {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ALERTAS DEL INICIO */
+
+.portal-moderno .portal-alertas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.portal-moderno .portal-alertas > p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.portal-moderno .portal-alerta-item {
+  padding: 16px 18px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.portal-moderno .portal-alerta-item.proxima {
+  background: #fffbeb;
+  border-color: #fcd34d;
+  border-left: 4px solid #f59e0b;
+}
+
+.portal-moderno .portal-alerta-item.vencida {
+  background: #fef2f2;
+  border-color: #fecaca;
+  border-left: 4px solid #dc2626;
+}
+
+.portal-moderno .portal-alerta-item strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+.portal-moderno .portal-alerta-item p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #475569;
+}
+
+/* TABLAS DEL INICIO */
+
+.portal-moderno #tablaEquiposInicio td,
+.portal-moderno #tablaPrestamosInicio td {
+  vertical-align: middle;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+  .portal-moderno .portal-sidebar {
+    width: 220px;
+    flex-basis: 220px;
+  }
+
+  .portal-moderno .portal-area-principal
+  .portal-contenedor {
+    padding: 25px;
+  }
+
+  .portal-moderno .portal-area-principal
+  .portal-header {
+    padding: 20px 25px;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .portal-moderno .portal-layout {
+    flex-direction: column;
+  }
+
+  .portal-moderno .portal-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex: none;
+    padding: 20px;
+    overflow: visible;
+  }
+
+  .portal-moderno .portal-sidebar-marca {
+    margin-bottom: 20px;
+  }
+
+  .portal-moderno .portal-menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .portal-moderno .portal-menu-opcion {
+    width: auto;
+    flex: 1 1 130px;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .portal-moderno .portal-sidebar-inferior {
+    padding-top: 15px;
+  }
+
+  .portal-moderno .portal-area-principal
+  .portal-header {
+    padding: 18px;
+  }
+
+  .portal-moderno .portal-area-principal
+  .portal-contenedor {
+    padding: 20px 15px;
+  }
+
+  .portal-moderno .portal-resumen {
+    grid-template-columns: 1fr;
+  }
+
+  .portal-moderno .portal-titulo {
+    flex-wrap: wrap;
+  }
+
+}
+
+
+/* ==========================================
+   ENLACES DE REGISTRO TECHLOAN
+   ========================================== */
+
+.login-enlace-registro {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.login-enlace-registro:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Campos select del registro */
+
+.login-campo select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 14px;
+  outline: none;
+}
+
+.login-campo select:focus {
+  border-color: #2563eb;
+}
+
+
+/* ==========================================
+   VERIFICACIÓN DE CORREO TECHLOAN
+   ========================================== */
+
+.verificacion-correo-destino {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 24px;
+  overflow-wrap: anywhere;
+}
+
+#codigoVerificacion {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 7px;
+}
+
+.mensaje-verificacion-exito {
+  color: #15803d !important;
+  font-weight: 600;
+  line-height: 1.6;
+  text-align: center;
+}
+
+
+/* ==========================================
+   SOLICITUDES DE REGISTRO
+   ========================================== */
+
+.solicitudes-tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 24px;
+}
+
+.solicitudes-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.solicitudes-tabla th,
+.solicitudes-tabla td {
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.solicitudes-tabla th {
+  color: #64748b;
+  font-weight: 700;
+  background: #f8fafc;
+}
+
+.solicitudes-tabla td {
+  color: #334155;
+}
+
+.solicitudes-acciones {
+  white-space: nowrap;
+}
+
+.solicitudes-acciones button {
+  margin-right: 8px;
+  padding: 9px 13px;
+  cursor: pointer;
+}
+
+.solicitudes-acciones button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#mensajeSolicitudes {
+  margin-top: 16px;
+}
+
+
+/* ==========================================
+   TECHLOAN - MODO OSCURO
+   ========================================== */
+
+html.tema-oscuro {
+  color-scheme: dark;
+}
+
+html.tema-oscuro body,
+html.tema-oscuro body.dashboard-moderno,
+html.tema-oscuro body.dashboard-body,
+html.tema-oscuro body.portal-usuario,
+html.tema-oscuro body.login-page,
+html.tema-oscuro .dashboard-moderno,
+html.tema-oscuro .portal-moderno {
+  background: #0b1220;
+  color: #e2e8f0;
+}
+
+/* Paneles, tarjetas y formularios */
+
+html.tema-oscuro .login-formulario-panel,
+html.tema-oscuro .login-card,
+html.tema-oscuro .usuario-header,
+html.tema-oscuro .stat-card,
+html.tema-oscuro .dashboard-panel,
+html.tema-oscuro .reporte-tarjeta,
+html.tema-oscuro .incidencia-tarjeta,
+html.tema-oscuro .portal-tarjeta,
+html.tema-oscuro .portal-seccion,
+html.tema-oscuro .modal-contenido,
+html.tema-oscuro .auditoria-detalle,
+html.tema-oscuro .auditoria-bloque,
+html.tema-oscuro .historial-item {
+  background: #172338;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+
+/* Títulos y textos */
+
+html.tema-oscuro h1,
+html.tema-oscuro h2,
+html.tema-oscuro h3,
+html.tema-oscuro h4,
+html.tema-oscuro .login-page .login-card h2,
+html.tema-oscuro .dashboard-moderno .stat-card h2,
+html.tema-oscuro .reporte-tarjeta strong,
+html.tema-oscuro .incidencia-tarjeta strong,
+html.tema-oscuro .portal-tarjeta strong,
+html.tema-oscuro .auditoria-detalle-valor,
+html.tema-oscuro .auditoria-campo strong {
+  color: #f1f5f9;
+}
+
+html.tema-oscuro .subtitulo,
+html.tema-oscuro .panel-descripcion,
+html.tema-oscuro .dashboard-header p,
+html.tema-oscuro .login-descripcion,
+html.tema-oscuro .portal-bienvenida p,
+html.tema-oscuro .stat-card p,
+html.tema-oscuro .reporte-tarjeta p,
+html.tema-oscuro .incidencia-tarjeta p,
+html.tema-oscuro .auditoria-detalle-etiqueta {
+  color: #a8b8cd;
+}
+
+/* Formularios */
+
+html.tema-oscuro input,
+html.tema-oscuro select,
+html.tema-oscuro textarea,
+html.tema-oscuro .login-page .login-campo input,
+html.tema-oscuro .login-campo select {
+  background: #101b2e;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+html.tema-oscuro input::placeholder,
+html.tema-oscuro textarea::placeholder {
+  color: #a8b8cd;
+}
+
+html.tema-oscuro input:focus,
+html.tema-oscuro select:focus,
+html.tema-oscuro textarea:focus {
+  border-color: #60a5fa;
+  outline-color: #60a5fa;
+}
+
+/* Tablas */
+
+html.tema-oscuro .tabla-equipos th,
+html.tema-oscuro .portal-tabla th,
+html.tema-oscuro .solicitudes-tabla th {
+  background: #223149;
+  color: #e2e8f0;
+}
+
+html.tema-oscuro .tabla-equipos td,
+html.tema-oscuro .portal-tabla td,
+html.tema-oscuro .solicitudes-tabla td {
+  color: #e2e8f0;
+  border-bottom-color: #334155;
+}
+
+/* Secciones internas */
+
+html.tema-oscuro .alerta-item,
+html.tema-oscuro .detalle-devolucion,
+html.tema-oscuro .historial-equipo-info,
+html.tema-oscuro .auditoria-bloque,
+html.tema-oscuro .dashboard-moderno .alerta-item {
+  background: #223149;
+  border-color: #475569;
+}
+
+/* Botones secundarios */
+
+html.tema-oscuro .btn-secundario,
+html.tema-oscuro .btn-cerrar,
+html.tema-oscuro .portal-btn-secundario {
+  background: #334155;
+  color: #f8fafc;
+}
+
+html.tema-oscuro .btn-secundario:hover,
+html.tema-oscuro .btn-cerrar:hover,
+html.tema-oscuro .portal-btn-secundario:hover {
+  background: #475569;
+}
+
+/* Mantener legibles los encabezados oscuros */
+
+html.tema-oscuro .sidebar,
+html.tema-oscuro .portal-header,
+html.tema-oscuro .login-presentacion,
+html.tema-oscuro .dashboard-bienvenida {
+  color: #ffffff;
+}
+
+html.tema-oscuro :focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+
+/* CONTROLES DE ACCESIBILIDAD */
+
+.control-accesibilidad {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.control-accesibilidad label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.control-accesibilidad select {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+html.tema-oscuro .control-accesibilidad select {
+  background: #172338;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+
+
+/* ==========================================
+   TECHLOAN - TAMAÑO DE LETRA ACCESIBLE
+   ========================================== */
+
+/* Títulos principales */
+.dashboard-header h1,
+.dashboard-moderno .dashboard-header h1 {
+  font-size: 1.875rem;
+}
+
+.dashboard-panel h2,
+.dashboard-moderno .panel-titulo-moderno h2 {
+  font-size: 1.1875rem;
+}
+
+/* Menú lateral */
+.sidebar-menu a,
+.dashboard-moderno .sidebar-menu a {
+  font-size: 0.875rem;
+}
+
+.sidebar-logo h2,
+.dashboard-moderno .sidebar-logo h2 {
+  font-size: 1.375rem;
+}
+
+/* Tarjetas */
+.stat-card p,
+.dashboard-moderno .stat-card p {
+  font-size: 0.875rem;
+}
+
+.stat-card h2,
+.dashboard-moderno .stat-card h2 {
+  font-size: 2.125rem;
+}
+
+/* Textos secundarios */
+.dashboard-header p,
+.panel-descripcion,
+.alerta-item p,
+.dashboard-moderno .dashboard-header p {
+  font-size: 0.875rem;
+}
+
+/* Tablas */
+.tabla-equipos th,
+.tabla-equipos td,
+.portal-tabla th,
+.portal-tabla td {
+  font-size: 0.875rem;
+}
+
+/* Formularios */
+input,
+select,
+textarea,
+label,
+button {
+  font-size: 0.9375rem;
+}
+
+/* Encabezados de bienvenida */
+.dashboard-bienvenida h2 {
+  font-size: 1.625rem;
+}
+
+.dashboard-bienvenida p {
+  font-size: 0.875rem;
+}
+
+/* Panel de usuario */
+.usuario-header strong {
+  font-size: 0.875rem;
+}
+
+.usuario-header small {
+  font-size: 0.75rem;
+}
+
+/* Texto del selector */
+.control-accesibilidad label {
+  font-size: 0.875rem;
+}
+
+.control-accesibilidad select {
+  font-size: 0.9375rem;
+}
+
+
+/* ==========================================
+   TECHLOAN - CONTROLES DE VOZ
+   ========================================== */
+
+.controles-voz {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.controles-voz button {
+  width: auto;
+  padding: 11px 15px;
+  font-size: 0.875rem;
+}
+
+#btnLeerPagina {
+  background: #2563eb;
+  color: white;
+}
+
+#btnLeerPagina:hover {
+  background: #1d4ed8;
+}
+
+#btnDetenerLectura {
+  background: #475569;
+  color: white;
+}
+
+#btnDetenerLectura:hover {
+  background: #334155;
+}
+
+
+/* ==========================================
+   TECHLOAN - PANEL FLOTANTE ACCESIBILIDAD
+   ========================================== */
+
+.accesibilidad-flotante {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 2001;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  font-size: 27px;
+  padding: 0;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.25);
+}
+
+.accesibilidad-panel {
+  position: fixed;
+  right: 25px;
+  bottom: 95px;
+  z-index: 2000;
+  width: min(330px, calc(100vw - 30px));
+  max-height: calc(100vh - 125px);
+  overflow-y: auto;
+  padding: 22px;
+  border-radius: 16px;
+  background: white;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+}
+
+.accesibilidad-panel[hidden] {
+  display: none;
+}
+
+.accesibilidad-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.accesibilidad-encabezado h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+#btnCerrarAccesibilidad {
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.accesibilidad-panel #btnModoOscuro {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.accesibilidad-panel .control-accesibilidad {
+  margin-bottom: 20px;
+}
+
+.accesibilidad-panel .controles-voz {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.accesibilidad-panel .controles-voz button {
+  width: 100%;
+}
+
+html.tema-oscuro .accesibilidad-panel {
+  background: #172338;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+html.tema-oscuro #btnCerrarAccesibilidad {
+  background: #334155;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .accesibilidad-flotante {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .accesibilidad-panel {
+    right: 15px;
+    bottom: 85px;
+  }
+}
+
+
+/* ==========================================
+   TECHLOAN - CONTRASTE EN AUDITORÍA
+   ========================================== */
+
+/* Fondo de los paneles */
+html.tema-oscuro .auditoria-moderno .dashboard-panel {
+  background: #172338;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+/* Encabezados y textos de la tabla */
+html.tema-oscuro .auditoria-moderno .tabla-equipos th {
+  background: #22324d;
+  color: #ffffff;
+}
+
+/* Filas de la tabla */
+html.tema-oscuro .auditoria-moderno .tabla-equipos td {
+  background: #172338;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+
+/* Filas alternadas */
+html.tema-oscuro .auditoria-moderno
+.tabla-equipos tbody tr:nth-child(even) td {
+  background: #1d2b42;
+}
+
+/* Textos generales */
+html.tema-oscuro .auditoria-moderno
+.tabla-encabezado h2,
+html.tema-oscuro .auditoria-moderno
+.auditoria-filtros label {
+  color: #f1f5f9;
+}
+
+/* Recuadros de detalles */
+html.tema-oscuro .auditoria-moderno
+.tabla-equipos td strong,
+html.tema-oscuro .auditoria-moderno
+.tabla-equipos td p {
+  color: #f1f5f9;
+}
+
+/* Campos de búsqueda y filtros */
+html.tema-oscuro .auditoria-moderno
+.auditoria-filtros input,
+html.tema-oscuro .auditoria-moderno
+.auditoria-filtros select {
+  background: #22324d;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+
+/* ==========================================
+   TECHLOAN - LETRA ACCESIBLE EN EL PORTAL
+   ========================================== */
+
+.portal-moderno .portal-menu-opcion {
+  font-size: 0.9375rem;
+}
+
+.portal-moderno .portal-header h1 {
+  font-size: 1.5rem;
+}
+
+.portal-moderno .portal-bienvenida h2 {
+  font-size: 1.875rem;
+}
+
+.portal-moderno .portal-titulo h2 {
+  font-size: 1.25rem;
+}
+
+.portal-moderno .portal-tarjeta h3 {
+  font-size: 1rem;
+}
+
+.portal-moderno .portal-tabla th,
+.portal-moderno .portal-tabla td {
+  font-size: 0.875rem;
+}
+
+.portal-moderno .portal-filtros input,
+.portal-moderno .portal-filtros select,
+.portal-moderno .portal-filtros button,
+.portal-moderno .portal-btn,
+.portal-moderno .portal-btn-secundario {
+  font-size: 0.9375rem;
+}
+
+.portal-moderno #formSolicitudPortal label,
+.portal-moderno #formSolicitudPortal textarea {
+  font-size: 0.9375rem;
+}
+
+
+/* ==========================================
+   TECHLOAN - MODO OSCURO PORTAL USUARIO
+   ========================================== */
+
+/* Fondo principal */
+html.tema-oscuro .portal-moderno {
+  background: #0b1220;
+  color: #f1f5f9;
+}
+
+/* Encabezado */
+html.tema-oscuro .portal-moderno .portal-header {
+  background: #111c30;
+  border-color: #334155;
+}
+
+html.tema-oscuro .portal-moderno .portal-header h1,
+html.tema-oscuro .portal-moderno .portal-header p,
+html.tema-oscuro .portal-moderno .portal-perfil strong,
+html.tema-oscuro .portal-moderno .portal-perfil small {
+  color: #f1f5f9;
+}
+
+/* Área principal */
+html.tema-oscuro .portal-moderno .portal-area-principal {
+  background: #0b1220;
+}
+
+/* Tarjetas de resumen */
+html.tema-oscuro .portal-moderno .portal-tarjeta {
+  background: #172338;
+  border-color: #334155;
+}
+
+html.tema-oscuro .portal-moderno .portal-tarjeta h3,
+html.tema-oscuro .portal-moderno .portal-tarjeta p,
+html.tema-oscuro .portal-moderno .portal-tarjeta strong {
+  color: #f1f5f9;
+}
+
+/* Paneles de contenido */
+html.tema-oscuro .portal-moderno .portal-seccion {
+  background: #172338;
+  border-color: #334155;
+}
+
+html.tema-oscuro .portal-moderno .portal-titulo h2,
+html.tema-oscuro .portal-moderno .portal-seccion h2,
+html.tema-oscuro .portal-moderno .portal-seccion h3 {
+  color: #f1f5f9;
+}
+
+/* Tablas */
+html.tema-oscuro .portal-moderno .portal-tabla {
+  color: #e2e8f0;
+}
+
+html.tema-oscuro .portal-moderno .portal-tabla th {
+  background: #22324d;
+  color: #ffffff;
+}
+
+html.tema-oscuro .portal-moderno .portal-tabla td {
+  background: #172338;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+
+/* Filas alternadas */
+html.tema-oscuro .portal-moderno
+.portal-tabla tbody tr:nth-child(even) td {
+  background: #1d2b42;
+}
+
+/* Formularios */
+html.tema-oscuro .portal-moderno input,
+html.tema-oscuro .portal-moderno select,
+html.tema-oscuro .portal-moderno textarea {
+  background: #22324d;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+html.tema-oscuro .portal-moderno label {
+  color: #e2e8f0;
+}
+
+/* Notificaciones */
+html.tema-oscuro .portal-moderno .portal-alertas {
+  color: #f1f5f9;
+}
+
+html.tema-oscuro .portal-moderno .portal-alertas h3,
+html.tema-oscuro .portal-moderno .portal-alertas p {
+  color: #f1f5f9;
+}
+
+/* Textos secundarios */
+html.tema-oscuro .portal-moderno .portal-panel-etiqueta,
+html.tema-oscuro .portal-moderno .portal-categoria {
+  color: #93c5fd;
+}
+
+
+/* ==========================================
+   TECHLOAN - CONTRASTE DE ALERTAS
+   ========================================== */
+
+/* Mantener el texto legible en alertas claras */
+html.tema-oscuro .portal-moderno
+.portal-alertas > * {
+  color: #1e293b;
+}
+
+/* Textos internos de las notificaciones */
+html.tema-oscuro .portal-moderno
+.portal-alertas > * h3,
+html.tema-oscuro .portal-moderno
+.portal-alertas > * h4,
+html.tema-oscuro .portal-moderno
+.portal-alertas > * p,
+html.tema-oscuro .portal-moderno
+.portal-alertas > * strong,
+html.tema-oscuro .portal-moderno
+.portal-alertas > * span {
+  color: #1e293b;
+}
+
+/* Mantener la legibilidad de enlaces */
+html.tema-oscuro .portal-moderno
+.portal-alertas > * a {
+  color: #1d4ed8;
+}
+
+
+/* ==========================================
+   TECHLOAN - ACCESIBILIDAD EN REGISTRO
+   ========================================== */
+
+/* Selector de tipo de usuario */
+html.tema-oscuro .login-page .login-campo select {
+  background: #22324d;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+/* Texto de las opciones */
+html.tema-oscuro .login-page .login-campo select option {
+  background: #22324d;
+  color: #f1f5f9;
+}
+
+/* Tamaño de letra adaptable */
+.login-page .login-campo select {
+  font-size: 0.9375rem;
+}
+
+/* Botón de registro */
+.login-page #btnRegistro {
+  font-size: 0.9375rem;
+}
+
+/* Indicadores de foco para navegación por teclado */
+.login-page input:focus-visible,
+.login-page select:focus-visible,
+.login-page button:focus-visible,
+.login-page a:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 3px;
+}
+
+/* Mensajes del formulario */
+html.tema-oscuro .login-page .mensaje-error {
+  color: #fca5a5;
+}
+
+
+/* ==========================================
+   TECHLOAN - ACCESIBILIDAD VERIFICACIÓN
+   ========================================== */
+
+/* Correo de destino */
+html.tema-oscuro .login-page
+.verificacion-correo-destino {
+  color: #93c5fd;
+}
+
+/* Campo del código */
+html.tema-oscuro .login-page
+#codigoVerificacion {
+  background: #22324d;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+/* Tamaño adaptable del código */
+.login-page #codigoVerificacion {
+  font-size: 1.125rem;
+  letter-spacing: 0.15em;
+}
+
+/* Botón de verificación */
+.login-page #btnVerificar {
+  font-size: 0.9375rem;
+}
+
+/* Foco visible para navegación por teclado */
+.login-page #codigoVerificacion:focus-visible,
+.login-page #btnVerificar:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 3px;
+}

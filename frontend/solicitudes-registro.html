@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>TechLoan | Solicitudes de registro</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="dashboard-body dashboard-moderno">
+
+  <div class="app-layout" id="appLayout" hidden>
+
+    <aside class="sidebar">
+
+      <div class="sidebar-logo">
+        <span>TL</span>
+        <div>
+          <h2>TechLoan</h2>
+          <small>Gestión tecnológica</small>
+        </div>
+      </div>
+
+      <p class="sidebar-etiqueta">MENÚ PRINCIPAL</p>
+
+      <nav class="sidebar-menu">
+
+        <a href="dashboard.html">
+          <span class="menu-icono">▦</span>
+          Panel principal
+        </a>
+
+        <a href="equipos.html">
+          <span class="menu-icono">▣</span>
+          Equipos
+        </a>
+
+        <a href="prestamos.html">
+          <span class="menu-icono">⇄</span>
+          Préstamos
+        </a>
+
+        <a href="reportes.html">
+          <span class="menu-icono">▥</span>
+          Reportes
+        </a>
+
+        <a href="incidencias.html">
+          <span class="menu-icono">⚑</span>
+          Incidencias
+        </a>
+
+        <a href="usuarios.html" id="menuUsuarios">
+          <span class="menu-icono">♙</span>
+          Usuarios
+        </a>
+
+        <a href="solicitudes-registro.html"
+           class="activo"
+           id="menuSolicitudesRegistro">
+          <span class="menu-icono">✉</span>
+          Solicitudes de registro
+        </a>
+
+        <a href="auditoria.html" id="menuAuditoria">
+          <span class="menu-icono">◷</span>
+          Auditoría
+        </a>
+
+      </nav>
+
+      <div class="sidebar-inferior">
+
+        <div class="sidebar-sistema">
+          <span class="sistema-indicador"></span>
+          Sistema TechLoan
+        </div>
+
+        <button id="cerrarSesion" class="btn-salir">
+          Cerrar sesión
+        </button>
+
+      </div>
+
+    </aside>
+
+    <main class="main-content">
+
+      <header class="dashboard-header">
+
+        <div>
+          <span class="dashboard-etiqueta">
+            ADMINISTRACIÓN DE CUENTAS
+          </span>
+
+          <h1>Solicitudes de registro</h1>
+
+          <p>
+            Revisa y gestiona las cuentas que
+            esperan aprobación administrativa.
+          </p>
+        </div>
+
+        <div class="usuario-header">
+          <div class="usuario-avatar">TL</div>
+
+          <div>
+            <strong id="nombreUsuario">Usuario</strong>
+            <small id="rolUsuario"></small>
+          </div>
+        </div>
+
+      </header>
+
+      <section class="dashboard-panel">
+
+        <div class="panel-titulo-moderno">
+
+          <div>
+            <span class="panel-etiqueta">
+              CUENTAS PENDIENTES
+            </span>
+
+            <h2>Solicitudes por revisar</h2>
+
+            <p id="totalSolicitudes">
+              Cargando solicitudes...
+            </p>
+          </div>
+
+          <button
+            type="button"
+            id="btnActualizarSolicitudes"
+            class="btn-activar">
+            Actualizar
+          </button>
+
+        </div>
+
+        <div class="solicitudes-tabla-contenedor">
+
+          <table class="solicitudes-tabla">
+
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Tipo</th>
+                <th>Verificación</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody id="tablaSolicitudes">
+              <tr>
+                <td colspan="6">
+                  Cargando solicitudes...
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <p id="mensajeSolicitudes"
+           class="mensaje-error"
+           role="status"
+           aria-live="polite"></p>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+<!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+
+<!-- SCRIPTS DEL MÓDULO -->
+<script src="js/api.js"></script>
+<script src="js/solicitudes-registro.js"></script>
+
+<!-- SCRIPTS DE ACCESIBILIDAD -->
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>TechLoan - Préstamos</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="dashboard-body dashboard-moderno prestamos-moderno">
+
+  <div class="app-layout" id="appLayout" hidden>
+
+    
+<aside class="sidebar">
+
+  <div class="sidebar-logo">
+    <span>TL</span>
+    <div>
+      <h2>TechLoan</h2>
+      <small>Gestión tecnológica</small>
+    </div>
+  </div>
+
+  <p class="sidebar-etiqueta">MENÚ PRINCIPAL</p>
+
+  <nav class="sidebar-menu">
+    <a href="dashboard.html">
+      <span class="menu-icono">▦</span>
+      Panel principal
+    </a>
+
+    <a href="equipos.html">
+      <span class="menu-icono">▣</span>
+      Equipos
+    </a>
+
+    <a href="prestamos.html" class="activo">
+      <span class="menu-icono">⇄</span>
+      Préstamos
+    </a>
+
+    <a href="reportes.html">
+      <span class="menu-icono">▥</span>
+      Reportes
+    </a>
+
+    <a href="incidencias.html">
+      <span class="menu-icono">⚑</span>
+      Incidencias
+    </a>
+
+    <a href="usuarios.html" id="menuUsuarios">
+      <span class="menu-icono">♙</span>
+      Usuarios
+    </a>
+
+
+<a href="solicitudes-registro.html"
+   id="menuSolicitudesRegistro">
+  <span class="menu-icono">✉</span>
+  Solicitudes de registro
+</a>
+
+    <a href="auditoria.html" id="menuAuditoria">
+      <span class="menu-icono">◷</span>
+      Auditoría
+    </a>
+  </nav>
+
+  <div class="sidebar-inferior">
+    <div class="sidebar-sistema">
+      <span class="sistema-indicador"></span>
+      Sistema TechLoan
+    </div>
+
+    <button id="cerrarSesion" class="btn-salir">
+      Cerrar sesión
+    </button>
+  </div>
+
+</aside>
+
+
+    <main class="main-content">
+
+      
+<header class="dashboard-header">
+
+  <div>
+    <span class="dashboard-etiqueta">
+      ADMINISTRACIÓN DE PRÉSTAMOS
+    </span>
+
+    <h1>Gestión de préstamos</h1>
+
+    <p>
+      Administra solicitudes, registra préstamos
+      y controla las devoluciones de equipos.
+    </p>
+  </div>
+
+  <div class="usuario-header">
+    <div class="usuario-avatar">TL</div>
+
+    <div>
+      <strong id="nombreUsuario">Usuario</strong>
+      <small id="rolUsuario"></small>
+    </div>
+  </div>
+
+</header>
+
+
+
+<!-- GESTIÓN DE SOLICITUDES -->
+<section class="dashboard-panel">
+
+  <div class="tabla-encabezado">
+    <div>
+      <span class="panel-etiqueta">SOLICITUDES POR REVISAR</span>
+      <h2>Solicitudes de préstamo pendientes</h2>
+      <span id="totalSolicitudesPendientes">0 solicitudes</span>
+    </div>
+
+    <button
+      type="button"
+      id="actualizarSolicitudesAdmin"
+      class="btn-nuevo">
+      Actualizar solicitudes
+    </button>
+  </div>
+
+  <div class="tabla-contenedor">
+    <table class="tabla-equipos">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Solicitante</th>
+          <th>Tipo</th>
+          <th>Equipo</th>
+          <th>Fecha límite</th>
+          <th>Motivo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody id="tablaSolicitudesAdmin">
+        <tr>
+          <td colspan="7">
+            Cargando solicitudes...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p
+    id="mensajeSolicitudesAdmin"
+    class="mensaje-error"
+    role="status">
+  </p>
+
+</section>
+
+      <section class="dashboard-panel">
+
+        <div class="tabla-encabezado">
+          <div>
+            <span class="panel-etiqueta">HISTORIAL Y SEGUIMIENTO</span>
+            <h2>Préstamos registrados</h2>
+            <span id="totalPrestamos">0 préstamos</span>
+          </div>
+
+          <button type="button" id="btnNuevoPrestamo"
+                  class="btn-nuevo">
+            + Nuevo préstamo
+          </button>
+        </div>
+
+        <div class="tabla-contenedor">
+          <table class="tabla-equipos">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Equipo</th>
+                <th>Usuario</th>
+                <th>Responsable</th>
+                <th>Fecha préstamo</th>
+                <th>Fecha límite</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody id="tablaPrestamos">
+              <tr>
+                <td colspan="8">Cargando préstamos...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p id="mensajePrestamos" class="mensaje-error"
+           role="alert"></p>
+
+      </section>
+    </main>
+  </div>
+
+  <div id="modalPrestamo" class="modal-overlay" hidden>
+
+    <section class="modal-contenido"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="tituloPrestamo">
+
+      <div class="modal-encabezado">
+        <h2 id="tituloPrestamo">Registrar préstamo</h2>
+
+        <button type="button" id="cerrarModalPrestamo"
+                class="btn-cerrar"
+                aria-label="Cerrar formulario">
+          ×
+        </button>
+      </div>
+
+      <form id="formPrestamo">
+
+        <label for="prestamoEquipo">Equipo disponible *</label>
+        <select id="prestamoEquipo" required>
+          <option value="">Seleccione un equipo</option>
+        </select>
+
+        <label for="prestamoUsuario">Usuario solicitante *</label>
+        <select id="prestamoUsuario" required>
+          <option value="">Seleccione un usuario</option>
+        </select>
+
+        <label for="prestamoFechaLimite">
+          Fecha límite de devolución *
+        </label>
+        <input type="datetime-local"
+               id="prestamoFechaLimite"
+               required>
+
+        <p class="panel-descripcion">
+          El responsable será el usuario que ha iniciado sesión.
+        </p>
+
+        <p id="errorPrestamo" class="mensaje-error"
+           role="alert"></p>
+
+        <div class="modal-botones">
+          <button type="button"
+                  id="cancelarPrestamo"
+                  class="btn-secundario">
+            Cancelar
+          </button>
+
+          <button type="submit" id="guardarPrestamo">
+            Registrar préstamo
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+
+<!-- MODAL DE DEVOLUCIÓN -->
+
+<div id="modalDevolucion" class="modal-overlay" hidden>
+
+  <section class="modal-contenido"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="tituloDevolucion">
+
+    <div class="modal-encabezado">
+      <h2 id="tituloDevolucion">
+        Registrar devolución
+      </h2>
+
+      <button type="button"
+              id="cerrarModalDevolucion"
+              class="btn-cerrar"
+              aria-label="Cerrar formulario">
+        ×
+      </button>
+    </div>
+
+    <form id="formDevolucion">
+
+      <input type="hidden" id="devolucionPrestamoId">
+
+      <div class="detalle-devolucion">
+        <p>
+          <strong>Equipo:</strong>
+          <span id="devolucionEquipo"></span>
+        </p>
+
+        <p>
+          <strong>Préstamo:</strong>
+          <span id="devolucionNumero"></span>
+        </p>
+      </div>
+
+      <label for="devolucionDanado">
+        ¿El equipo presenta daños?
+      </label>
+
+      <select id="devolucionDanado" required>
+        <option value="false">No, está en buen estado</option>
+        <option value="true">Sí, presenta daños</option>
+      </select>
+
+      <div id="contenedorDescripcion" hidden>
+
+        <label for="devolucionDescripcion">
+          Descripción del daño *
+        </label>
+
+        <textarea
+          id="devolucionDescripcion"
+          rows="4"
+          placeholder="Describe los daños encontrados">
+        </textarea>
+
+      </div>
+
+      <p id="errorDevolucion"
+         class="mensaje-error"
+         role="alert"></p>
+
+      <div class="modal-botones">
+
+        <button type="button"
+                id="cancelarDevolucion"
+                class="btn-secundario">
+          Cancelar
+        </button>
+
+        <button type="submit"
+                id="guardarDevolucion">
+          Registrar devolución
+        </button>
+
+      </div>
+
+    </form>
+  </section>
+</div>
+
+
+<!-- MODAL PARA RECHAZAR SOLICITUD -->
+<div id="modalRechazoSolicitud" class="modal-overlay" hidden>
+
+  <section
+    class="modal-contenido"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloRechazoSolicitud">
+
+    <div class="modal-encabezado">
+      <h2 id="tituloRechazoSolicitud">
+        Rechazar solicitud
+      </h2>
+
+      <button
+        type="button"
+        id="cerrarModalRechazo"
+        class="btn-cerrar"
+        aria-label="Cerrar formulario">
+        ×
+      </button>
+    </div>
+
+    <form id="formRechazoSolicitud">
+
+      <input
+        type="hidden"
+        id="rechazoSolicitudId">
+
+      <label for="motivoRechazoSolicitud">
+        Motivo del rechazo *
+      </label>
+
+      <textarea
+        id="motivoRechazoSolicitud"
+        rows="4"
+        required
+        placeholder="Explique por qué se rechaza la solicitud">
+      </textarea>
+
+      <p
+        id="errorRechazoSolicitud"
+        class="mensaje-error"
+        role="alert">
+      </p>
+
+      <div class="modal-botones">
+        <button
+          type="button"
+          id="cancelarRechazoSolicitud"
+          class="btn-secundario">
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          id="confirmarRechazoSolicitud">
+          Confirmar rechazo
+        </button>
+      </div>
+
+    </form>
+  </section>
+</div>
+
+
+<!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+
+<!-- SCRIPTS DEL MÓDULO DE PRÉSTAMOS -->
+<script src="js/api.js"></script>
+<script src="js/prestamos.js"></script>
+
+<!-- SCRIPTS DE ACCESIBILIDAD -->
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>
+

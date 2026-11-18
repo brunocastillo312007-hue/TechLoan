@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>TechLoan - Reportes</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="dashboard-body dashboard-moderno reportes-moderno">
+  
+  <div class="app-layout" id="appLayout" hidden>
+
+    
+<aside class="sidebar">
+
+  <div class="sidebar-logo">
+    <span>TL</span>
+    <div>
+      <h2>TechLoan</h2>
+      <small>Gestión tecnológica</small>
+    </div>
+  </div>
+
+  <p class="sidebar-etiqueta">MENÚ PRINCIPAL</p>
+
+  <nav class="sidebar-menu">
+    <a href="dashboard.html">
+      <span class="menu-icono">▦</span>
+      Panel principal
+    </a>
+
+    <a href="equipos.html">
+      <span class="menu-icono">▣</span>
+      Equipos
+    </a>
+
+    <a href="prestamos.html">
+      <span class="menu-icono">⇄</span>
+      Préstamos
+    </a>
+
+    <a href="reportes.html" class="activo">
+      <span class="menu-icono">▥</span>
+      Reportes
+    </a>
+
+    <a href="incidencias.html">
+      <span class="menu-icono">⚑</span>
+      Incidencias
+    </a>
+
+    <a href="usuarios.html" id="menuUsuarios">
+      <span class="menu-icono">♙</span>
+      Usuarios
+    </a>
+
+
+<a href="solicitudes-registro.html"
+   id="menuSolicitudesRegistro">
+  <span class="menu-icono">✉</span>
+  Solicitudes de registro
+</a>
+
+    <a href="auditoria.html" id="menuAuditoria">
+      <span class="menu-icono">◷</span>
+      Auditoría
+    </a>
+  </nav>
+
+  <div class="sidebar-inferior">
+    <div class="sidebar-sistema">
+      <span class="sistema-indicador"></span>
+      Sistema TechLoan
+    </div>
+
+    <button id="cerrarSesion" class="btn-salir">
+      Cerrar sesión
+    </button>
+  </div>
+
+</aside>
+
+
+    <main class="main-content">
+
+      
+<header class="dashboard-header">
+
+  <div>
+    <span class="dashboard-etiqueta">
+      ANÁLISIS Y SEGUIMIENTO
+    </span>
+
+    <h1>Reportes y alertas</h1>
+
+    <p>
+      Supervisa las devoluciones, identifica préstamos
+      vencidos y consulta las alertas del sistema.
+    </p>
+  </div>
+
+  <div class="usuario-header">
+    <div class="usuario-avatar">TL</div>
+
+    <div>
+      <strong id="nombreUsuario">Usuario</strong>
+      <small id="rolUsuario"></small>
+    </div>
+  </div>
+
+</header>
+
+
+      
+<section class="reportes-resumen">
+
+  <article class="reporte-tarjeta reporte-tarjeta-vencidos">
+
+    <div class="reporte-tarjeta-superior">
+      <span class="reporte-icono reporte-icono-rojo">!</span>
+      <span class="reporte-categoria">ATENCIÓN PRIORITARIA</span>
+    </div>
+
+    <h3>Préstamos vencidos</h3>
+
+    <strong id="totalVencidos">0</strong>
+
+    <p>Préstamos que superaron la fecha límite</p>
+
+  </article>
+
+  <article class="reporte-tarjeta reporte-tarjeta-proximos">
+
+    <div class="reporte-tarjeta-superior">
+      <span class="reporte-icono reporte-icono-amarillo">◷</span>
+      <span class="reporte-categoria">SEGUIMIENTO PREVENTIVO</span>
+    </div>
+
+    <h3>Próximos a vencer</h3>
+
+    <strong id="totalProximos">0</strong>
+
+    <p>Devoluciones que requieren atención</p>
+
+  </article>
+
+</section>
+
+
+      <section class="dashboard-panel">
+
+        <div class="tabla-encabezado">
+          <div>
+            <span class="panel-etiqueta">CONTROL DE DEVOLUCIONES</span>
+            <h2>Alertas de devolución</h2>
+            <span id="totalAlertas">0 alertas</span>
+          </div>
+
+          <button type="button"
+                  id="actualizarReportes"
+                  class="btn-nuevo">
+            Actualizar reportes
+          </button>
+        </div>
+
+        
+<div class="reportes-filtros">
+
+  <div class="reporte-campo-busqueda">
+    <label for="buscarReporte">Buscar registros</label>
+
+    <input
+      type="search"
+      id="buscarReporte"
+      placeholder="Buscar equipo, usuario o préstamo..."
+    >
+  </div>
+
+  <div class="reporte-campo-filtro">
+    <label for="filtroReporte">Filtrar por situación</label>
+
+    <select id="filtroReporte">
+      <option value="">Todas las alertas</option>
+      <option value="VENCIDO">Vencidos</option>
+      <option value="PROXIMO_A_VENCER">
+        Próximos a vencer
+      </option>
+    </select>
+  </div>
+
+</div>
+
+
+        <div class="tabla-contenedor">
+          <table class="tabla-equipos">
+            <thead>
+              <tr>
+                <th>Préstamo</th>
+                <th>Equipo</th>
+                <th>Usuario</th>
+                <th>Fecha límite</th>
+                <th>Situación</th>
+              </tr>
+            </thead>
+
+            <tbody id="tablaAlertas">
+              <tr>
+                <td colspan="5">Cargando alertas...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p id="mensajeReportes"
+           class="mensaje-error"
+           role="alert"></p>
+
+      </section>
+
+    </main>
+  </div>
+
+
+<!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+
+<!-- SCRIPTS DEL MÓDULO DE REPORTES -->
+<script src="js/api.js"></script>
+<script src="js/reportes.js"></script>
+
+<!-- SCRIPTS DE ACCESIBILIDAD -->
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>
+

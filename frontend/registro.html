@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>TechLoan | Crear cuenta</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="login-page">
+
+  <main class="login-container">
+
+    <section class="login-presentacion">
+
+      <div class="login-marca">
+        <div class="login-marca-icono">TL</div>
+        <span>TechLoan</span>
+      </div>
+
+      <div class="login-presentacion-contenido">
+
+        <span class="login-etiqueta">
+          REGISTRO DE USUARIOS
+        </span>
+
+        <h1>
+          Comienza a gestionar
+          <span>tus préstamos tecnológicos.</span>
+        </h1>
+
+        <p>
+          Regístrate en TechLoan para consultar
+          equipos disponibles, realizar solicitudes
+          y gestionar tus préstamos.
+        </p>
+
+        <div class="login-beneficios">
+          <div>✓ Crea tu cuenta de estudiante o docente</div>
+          <div>✓ Verifica tu correo electrónico</div>
+          <div>✓ Accede después de la aprobación</div>
+        </div>
+
+      </div>
+
+      <p class="login-presentacion-pie">
+        TechLoan · Sistema de gestión de préstamos
+      </p>
+
+    </section>
+
+    <section class="login-formulario-panel">
+
+      <div class="login-card">
+
+        <div class="login-icono">TL</div>
+
+        <span class="login-bienvenida">
+          ÚNETE A TECHLOAN
+        </span>
+
+        <h2>Crear una cuenta</h2>
+
+        <p class="login-descripcion">
+          Completa tus datos para solicitar
+          acceso a la plataforma.
+        </p>
+
+        <form id="formRegistro">
+
+          <div class="login-campo">
+            <label for="nombreRegistro">
+              Nombre completo
+            </label>
+
+            <input
+              type="text"
+              id="nombreRegistro"
+              placeholder="Ingresa tu nombre completo"
+              autocomplete="name"
+              required
+            >
+          </div>
+
+          <div class="login-campo">
+            <label for="correoRegistro">
+              Correo electrónico
+            </label>
+
+            <input
+              type="email"
+              id="correoRegistro"
+              placeholder="correo@ejemplo.com"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <div class="login-campo">
+            <label for="tipoRegistro">
+              Tipo de usuario
+            </label>
+
+            <select id="tipoRegistro" required>
+              <option value="">
+                Selecciona una opción
+              </option>
+              <option value="ESTUDIANTE">
+                Estudiante
+              </option>
+              <option value="DOCENTE">
+                Docente
+              </option>
+            </select>
+          </div>
+
+          <div class="login-campo">
+            <label for="passwordRegistro">
+              Contraseña
+            </label>
+
+            <input
+              type="password"
+              id="passwordRegistro"
+              placeholder="Mínimo 12 caracteres"
+              minlength="12"
+              autocomplete="new-password"
+              required
+            >
+          </div>
+
+          <div class="login-campo">
+            <label for="confirmarPassword">
+              Confirmar contraseña
+            </label>
+
+            <input
+              type="password"
+              id="confirmarPassword"
+              placeholder="Repite tu contraseña"
+              minlength="12"
+              autocomplete="new-password"
+              required
+            >
+          </div>
+
+          <button type="submit" id="btnRegistro">
+            Crear cuenta
+          </button>
+
+          <p id="mensajeRegistro"
+             class="mensaje-error"
+             role="alert"
+             aria-live="polite"></p>
+
+        </form>
+
+        <p class="login-ayuda">
+          ¿Ya tienes una cuenta?
+        </p>
+
+        <a href="index.html" class="login-enlace-registro">
+          Iniciar sesión
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+<!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+
+<!-- SCRIPTS DEL REGISTRO -->
+<script src="js/api.js"></script>
+<script src="js/registro.js"></script>
+
+<!-- SCRIPTS DE ACCESIBILIDAD -->
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>
+

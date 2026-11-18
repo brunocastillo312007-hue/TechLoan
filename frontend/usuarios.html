@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>TechLoan - Usuarios</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="dashboard-body dashboard-moderno usuarios-moderno">
+
+  <div class="app-layout" id="appLayout" hidden>
+
+    
+<aside class="sidebar">
+
+  <div class="sidebar-logo">
+    <span>TL</span>
+    <div>
+      <h2>TechLoan</h2>
+      <small>Gestión tecnológica</small>
+    </div>
+  </div>
+
+  <p class="sidebar-etiqueta">MENÚ PRINCIPAL</p>
+
+  <nav class="sidebar-menu">
+    <a href="dashboard.html">
+      <span class="menu-icono">▦</span>
+      Panel principal
+    </a>
+
+    <a href="equipos.html">
+      <span class="menu-icono">▣</span>
+      Equipos
+    </a>
+
+    <a href="prestamos.html">
+      <span class="menu-icono">⇄</span>
+      Préstamos
+    </a>
+
+    <a href="reportes.html">
+      <span class="menu-icono">▥</span>
+      Reportes
+    </a>
+
+    <a href="incidencias.html">
+      <span class="menu-icono">⚑</span>
+      Incidencias
+    </a>
+
+    <a href="usuarios.html" class="activo">
+      <span class="menu-icono">♙</span>
+      Usuarios
+    </a>
+
+
+<a href="solicitudes-registro.html"
+   id="menuSolicitudesRegistro">
+  <span class="menu-icono">✉</span>
+  Solicitudes de registro
+</a>
+
+    <a href="auditoria.html">
+      <span class="menu-icono">◷</span>
+      Auditoría
+    </a>
+  </nav>
+
+  <div class="sidebar-inferior">
+    <div class="sidebar-sistema">
+      <span class="sistema-indicador"></span>
+      Sistema TechLoan
+    </div>
+
+    <button id="cerrarSesion" class="btn-salir">
+      Cerrar sesión
+    </button>
+  </div>
+
+</aside>
+
+
+    <main class="main-content">
+
+      
+<header class="dashboard-header">
+
+  <div>
+    <span class="dashboard-etiqueta">
+      ADMINISTRACIÓN DE ACCESOS
+    </span>
+
+    <h1>Gestión de usuarios</h1>
+
+    <p>
+      Administra las cuentas, roles y permisos
+      de los usuarios de TechLoan.
+    </p>
+  </div>
+
+  <div class="usuario-header">
+    <div class="usuario-avatar">TL</div>
+
+    <div>
+      <strong id="nombreUsuario">Administrador</strong>
+      <small id="rolUsuario">ADMIN</small>
+    </div>
+  </div>
+
+</header>
+
+
+      <section class="dashboard-panel">
+
+        <div class="tabla-encabezado">
+          <div>
+            <span class="panel-etiqueta">DIRECTORIO DE USUARIOS</span>
+            <h2>Usuarios registrados</h2>
+            <span id="totalUsuarios">0 usuarios</span>
+          </div>
+
+          <button type="button"
+                  id="btnNuevoUsuario"
+                  class="btn-nuevo">
+            + Nuevo usuario
+          </button>
+        </div>
+
+        <div class="tabla-contenedor">
+          <table class="tabla-equipos">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody id="tablaUsuarios">
+              <tr>
+                <td colspan="7">Cargando usuarios...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p id="mensajeUsuarios" class="mensaje-error"
+           role="alert"></p>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- FORMULARIO DE REGISTRO -->
+
+  <div id="modalUsuario" class="modal-overlay" hidden>
+
+    <section class="modal-contenido"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="tituloUsuario">
+
+      <div class="modal-encabezado">
+        <h2 id="tituloUsuario">Registrar usuario</h2>
+
+        <button type="button"
+                id="cerrarModalUsuario"
+                class="btn-cerrar"
+                aria-label="Cerrar formulario">
+          ×
+        </button>
+      </div>
+
+      <form id="formUsuario">
+
+        <label for="usuarioNombre">Nombre completo *</label>
+        <input type="text"
+               id="usuarioNombre"
+               maxlength="100"
+               required>
+
+        <label for="usuarioCorreo">Correo electrónico *</label>
+        <input type="email"
+               id="usuarioCorreo"
+               maxlength="150"
+               required>
+
+        <label for="usuarioPassword">Contraseña *</label>
+        <input type="password"
+               id="usuarioPassword"
+               minlength="12"
+               autocomplete="new-password"
+               required>
+
+        <label for="usuarioTipo">Tipo de usuario *</label>
+        <select id="usuarioTipo" required>
+          <option value="">Seleccione un tipo</option>
+          <option value="ESTUDIANTE">Estudiante</option>
+          <option value="DOCENTE">Docente</option>
+          <option value="RESPONSABLE">Responsable</option>
+        </select>
+
+
+<div class="form-group">
+  <label for="usuarioRol">Rol del sistema</label>
+
+  <select id="usuarioRol" required>
+    <option value="">Seleccione un rol</option>
+    <option value="USUARIO">Usuario común</option>
+    <option value="OPERADOR">OPERADOR</option>
+  </select>
+</div>
+
+        <p class="usuarios-ayuda-roles">
+          <strong>Asignación de permisos:</strong>
+          Los estudiantes y docentes utilizan el rol USUARIO
+          para solicitar equipos. Los responsables utilizan
+          el rol OPERADOR para gestionar préstamos y devoluciones.
+        </p>
+
+        <p id="errorUsuario"
+           class="mensaje-error"
+           role="alert"></p>
+
+        <div class="modal-botones">
+          <button type="button"
+                  id="cancelarUsuario"
+                  class="btn-secundario">
+            Cancelar
+          </button>
+
+          <button type="submit" id="guardarUsuario">
+            Registrar usuario
+          </button>
+        </div>
+
+      </form>
+    </section>
+  </div>
+
+
+<!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+
+<!-- SCRIPTS DEL MÓDULO DE USUARIOS -->
+<script src="js/api.js"></script>
+<script src="js/usuarios.js"></script>
+
+<!-- SCRIPTS DE ACCESIBILIDAD -->
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>TechLoan - Incidencias</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="dashboard-body dashboard-moderno incidencias-moderno">
+
+  <div class="app-layout" id="appLayout" hidden>
+
+    
+<aside class="sidebar">
+
+  <div class="sidebar-logo">
+    <span>TL</span>
+    <div>
+      <h2>TechLoan</h2>
+      <small>Gestión tecnológica</small>
+    </div>
+  </div>
+
+  <p class="sidebar-etiqueta">MENÚ PRINCIPAL</p>
+
+  <nav class="sidebar-menu">
+
+    <a href="dashboard.html">
+      <span class="menu-icono">▦</span>
+      Panel principal
+    </a>
+
+    <a href="equipos.html">
+      <span class="menu-icono">▣</span>
+      Equipos
+    </a>
+
+    <a href="prestamos.html">
+      <span class="menu-icono">⇄</span>
+      Préstamos
+    </a>
+
+    <a href="reportes.html">
+      <span class="menu-icono">▥</span>
+      Reportes
+    </a>
+
+    <a href="incidencias.html" class="activo">
+      <span class="menu-icono">⚑</span>
+      Incidencias
+    </a>
+
+    <a href="usuarios.html" id="menuUsuarios">
+      <span class="menu-icono">♙</span>
+      Usuarios
+    </a>
+
+<a href="solicitudes-registro.html"
+   id="menuSolicitudesRegistro">
+  <span class="menu-icono">✉</span>
+  Solicitudes de registro
+</a>
+
+    <a href="auditoria.html" id="menuAuditoria">
+      <span class="menu-icono">◷</span>
+      Auditoría
+    </a>
+
+  </nav>
+
+  <div class="sidebar-inferior">
+
+    <div class="sidebar-sistema">
+      <span class="sistema-indicador"></span>
+      Sistema TechLoan
+    </div>
+
+    <button id="cerrarSesion" class="btn-salir">
+      Cerrar sesión
+    </button>
+
+  </div>
+
+</aside>
+
+
+    <main class="main-content">
+
+      
+<header class="dashboard-header">
+
+  <div>
+    <span class="dashboard-etiqueta">
+      CONTROL Y MANTENIMIENTO
+    </span>
+
+    <h1>Incidencias de equipos</h1>
+
+    <p>
+      Consulta los daños registrados y supervisa
+      el estado de mantenimiento de los equipos tecnológicos.
+    </p>
+  </div>
+
+  <div class="usuario-header">
+
+    <div class="usuario-avatar">TL</div>
+
+    <div>
+      <strong id="nombreUsuario">Usuario</strong>
+      <small id="rolUsuario"></small>
+    </div>
+
+  </div>
+
+</header>
+
+
+      
+<section class="incidencias-resumen">
+
+  <article class="incidencia-tarjeta incidencia-tarjeta-total">
+
+    <div class="incidencia-tarjeta-superior">
+      <span class="incidencia-icono incidencia-icono-azul">▤</span>
+      <span class="incidencia-categoria">
+        REGISTRO HISTÓRICO
+      </span>
+    </div>
+
+    <h3>Total de incidencias</h3>
+
+    <strong id="totalIncidencias">0</strong>
+
+    <p>Incidencias registradas en el sistema</p>
+
+  </article>
+
+  <article class="incidencia-tarjeta incidencia-tarjeta-mantenimiento">
+
+    <div class="incidencia-tarjeta-superior">
+      <span class="incidencia-icono incidencia-icono-naranja">⚙</span>
+      <span class="incidencia-categoria">
+        ATENCIÓN TÉCNICA
+      </span>
+    </div>
+
+    <h3>Equipos en mantenimiento</h3>
+
+    <strong id="totalMantenimiento">0</strong>
+
+    <p>Equipos actualmente en mantenimiento</p>
+
+  </article>
+
+</section>
+
+
+      
+<div class="tabla-encabezado">
+
+  <div>
+    <span class="panel-etiqueta">
+      SEGUIMIENTO DE EQUIPOS
+    </span>
+
+    <h2>Historial de incidencias</h2>
+
+    <span id="totalRegistrosIncidencias">
+      0 registros
+    </span>
+  </div>
+
+  <button
+    type="button"
+    id="actualizarIncidencias"
+    class="btn-nuevo">
+    Actualizar
+  </button>
+
+</div>
+
+
+        
+<div class="incidencias-filtros">
+
+  <div class="incidencia-campo-busqueda">
+
+    <label for="buscarIncidencia">
+      Buscar registros
+    </label>
+
+    <input
+      type="search"
+      id="buscarIncidencia"
+      placeholder="Buscar equipo, código, responsable o descripción..."
+    >
+
+  </div>
+
+  <div class="incidencia-campo-filtro">
+
+    <label for="filtroEstadoIncidencia">
+      Filtrar por estado del equipo
+    </label>
+
+    <select id="filtroEstadoIncidencia">
+      <option value="">Todos los estados</option>
+      <option value="MANTENIMIENTO">Mantenimiento</option>
+      <option value="DISPONIBLE">Disponible</option>
+      <option value="PRESTADO">Prestado</option>
+      <option value="INACTIVO">Inactivo</option>
+    </select>
+
+  </div>
+
+</div>
+
+
+        <div class="tabla-contenedor">
+          <table class="tabla-equipos">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Equipo</th>
+                <th>Código</th>
+                <th>Préstamo</th>
+                <th>Responsable</th>
+                <th>Descripción del daño</th>
+                <th>Estado actual</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+
+            <tbody id="tablaIncidencias">
+              <tr>
+                <td colspan="8">
+                  Cargando incidencias...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p id="mensajeIncidencias"
+           class="mensaje-error"
+           role="alert"></p>
+
+      </section>
+    </main>
+  </div>
+
+
+<!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+
+<!-- SCRIPTS DEL MÓDULO DE INCIDENCIAS -->
+<script src="js/api.js"></script>
+<script src="js/incidencias.js"></script>
+
+<!-- SCRIPTS DE ACCESIBILIDAD -->
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>TechLoan | Iniciar sesión</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="login-page">
+
+  <main class="login-container">
+
+    <section class="login-presentacion">
+      <div class="login-marca">
+        <div class="login-marca-icono">TL</div>
+        <span>TechLoan</span>
+      </div>
+
+      <div class="login-presentacion-contenido">
+        <span class="login-etiqueta">
+          PLATAFORMA DE GESTIÓN TECNOLÓGICA
+        </span>
+
+        <h1>
+          Gestiona tus equipos
+          <span>de forma inteligente.</span>
+        </h1>
+
+        <p>
+          Una plataforma para administrar préstamos,
+          controlar la disponibilidad de equipos
+          tecnológicos y mantener un historial
+          completo de cada operación.
+        </p>
+
+        <div class="login-beneficios">
+          <div>✓ Control de equipos en tiempo real</div>
+          <div>✓ Gestión de préstamos y devoluciones</div>
+          <div>✓ Historial, reportes y alertas</div>
+        </div>
+      </div>
+
+      <p class="login-presentacion-pie">
+        TechLoan · Sistema de gestión de préstamos
+      </p>
+    </section>
+
+    <section class="login-formulario-panel">
+      <div class="login-card">
+
+        <div class="login-icono">TL</div>
+
+        <span class="login-bienvenida">
+          BIENVENIDO A TECHLOAN
+        </span>
+
+        <h2>Iniciar sesión</h2>
+
+        <p class="login-descripcion">
+          Ingresa tus credenciales para acceder
+          a tu espacio de trabajo.
+        </p>
+
+        <form id="formLogin">
+
+          <div class="login-campo">
+            <label for="correo">Correo electrónico</label>
+
+            <input
+              type="email"
+              id="correo"
+              placeholder="correo@ejemplo.com"
+              autocomplete="username"
+              required
+            >
+          </div>
+
+          <div class="login-campo">
+            <label for="password">Contraseña</label>
+
+            <input
+              type="password"
+              id="password"
+              placeholder="Ingresa tu contraseña"
+              autocomplete="current-password"
+              required
+            >
+          </div>
+
+          <button type="submit" id="btnLogin">
+            Iniciar sesión
+          </button>
+
+          <p id="mensajeError"
+             class="mensaje-error"
+             role="alert"></p>
+
+        </form>
+
+        
+<p class="login-ayuda">
+  ¿Todavía no tienes una cuenta?
+</p>
+
+<a href="registro.html" class="login-enlace-registro">
+  Crear una cuenta
+</a>
+
+<p class="login-ayuda">
+  El registro requiere verificación por correo
+  y aprobación del administrador.
+</p>
+
+
+      </div>
+    </section>
+
+  </main>
+
+
+<!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+
+<!-- SCRIPTS DE INICIO DE SESIÓN -->
+<script src="js/api.js"></script>
+<script src="js/login.js"></script>
+
+<!-- SCRIPTS DE ACCESIBILIDAD -->
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>

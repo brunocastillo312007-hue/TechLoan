@@ -1,0 +1,21 @@
+﻿# Dependencias
+node_modules/
+**/node_modules/
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Archivos temporales
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Configuracion local
+.vscode/
+.idea/
+
+# Vercel
+.vercel/

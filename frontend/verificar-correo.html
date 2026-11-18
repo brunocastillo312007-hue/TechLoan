@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>TechLoan | Verificar correo</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="login-page">
+
+  <main class="login-container">
+
+    <section class="login-presentacion">
+
+      <div class="login-marca">
+        <div class="login-marca-icono">TL</div>
+        <span>TechLoan</span>
+      </div>
+
+      <div class="login-presentacion-contenido">
+
+        <span class="login-etiqueta">
+          SEGURIDAD DE CUENTAS
+        </span>
+
+        <h1>
+          Verifica tu correo
+          <span>y completa tu registro.</span>
+        </h1>
+
+        <p>
+          Para proteger tu cuenta, necesitamos
+          confirmar que tienes acceso al correo
+          electrónico utilizado durante el registro.
+        </p>
+
+        <div class="login-beneficios">
+          <div>✓ Revisa tu bandeja de entrada</div>
+          <div>✓ Introduce el código recibido</div>
+          <div>✓ Espera la aprobación administrativa</div>
+        </div>
+
+      </div>
+
+      <p class="login-presentacion-pie">
+        TechLoan · Sistema de gestión de préstamos
+      </p>
+
+    </section>
+
+    <section class="login-formulario-panel">
+
+      <div class="login-card">
+
+        <div class="login-icono">TL</div>
+
+        <span class="login-bienvenida">
+          VERIFICACIÓN DE IDENTIDAD
+        </span>
+
+        <h2>Verificar correo</h2>
+
+        <p class="login-descripcion">
+          Hemos enviado un código de seis dígitos
+          a tu correo electrónico.
+        </p>
+
+        <p id="correoDestino"
+           class="verificacion-correo-destino"></p>
+
+        <form id="formVerificacion">
+
+          <div class="login-campo">
+
+            <label for="codigoVerificacion">
+              Código de verificación
+            </label>
+
+            <input
+              type="text"
+              id="codigoVerificacion"
+              placeholder="Ejemplo: 123456"
+              inputmode="numeric"
+              pattern="[0-9]{6}"
+              maxlength="6"
+              autocomplete="one-time-code"
+              required
+            >
+
+          </div>
+
+          <button type="submit" id="btnVerificar">
+            Verificar correo
+          </button>
+
+          <p id="mensajeVerificacion"
+             class="mensaje-error"
+             role="status"
+             aria-live="polite"></p>
+
+        </form>
+
+        <p class="login-ayuda">
+          El código tiene una validez de 10 minutos.
+        </p>
+
+        <a href="index.html"
+           class="login-enlace-registro">
+          Volver al inicio de sesión
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+<!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+
+<!-- SCRIPTS DE VERIFICACIÓN -->
+<script src="js/api.js"></script>
+<script src="js/verificar-correo.js"></script>
+
+<!-- SCRIPTS DE ACCESIBILIDAD -->
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>
+

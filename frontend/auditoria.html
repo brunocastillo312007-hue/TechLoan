@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>TechLoan - Auditoría</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="dashboard-body dashboard-moderno auditoria-moderno">
+
+  <div class="app-layout" id="appLayout" hidden>
+
+    
+<aside class="sidebar">
+
+  <div class="sidebar-logo">
+    <span>TL</span>
+    <div>
+      <h2>TechLoan</h2>
+      <small>Gestión tecnológica</small>
+    </div>
+  </div>
+
+  <p class="sidebar-etiqueta">MENÚ PRINCIPAL</p>
+
+  <nav class="sidebar-menu">
+
+    <a href="dashboard.html">
+      <span class="menu-icono">▦</span>
+      Panel principal
+    </a>
+
+    <a href="equipos.html">
+      <span class="menu-icono">▣</span>
+      Equipos
+    </a>
+
+    <a href="prestamos.html">
+      <span class="menu-icono">⇄</span>
+      Préstamos
+    </a>
+
+    <a href="reportes.html">
+      <span class="menu-icono">▥</span>
+      Reportes
+    </a>
+
+    <a href="incidencias.html">
+      <span class="menu-icono">⚑</span>
+      Incidencias
+    </a>
+
+    <a href="usuarios.html">
+      <span class="menu-icono">♙</span>
+      Usuarios
+    </a>
+
+    
+<a href="solicitudes-registro.html"
+   id="menuSolicitudesRegistro">
+  <span class="menu-icono">✉</span>
+  Solicitudes de registro
+</a>
+
+    <a href="auditoria.html" class="activo">
+      <span class="menu-icono">◷</span>
+      Auditoría
+    </a>
+
+  </nav>
+
+  <div class="sidebar-inferior">
+
+    <div class="sidebar-sistema">
+      <span class="sistema-indicador"></span>
+      Sistema TechLoan
+    </div>
+
+    <button id="cerrarSesion" class="btn-salir">
+      Cerrar sesión
+    </button>
+
+  </div>
+
+</aside>
+
+
+    <main class="main-content">
+
+      
+<header class="dashboard-header">
+
+  <div>
+    <span class="dashboard-etiqueta">
+      SEGURIDAD Y TRAZABILIDAD
+    </span>
+
+    <h1>Auditoría del sistema</h1>
+
+    <p>
+      Consulta el historial de operaciones, identifica
+      responsables y supervisa los cambios realizados
+      en TechLoan.
+    </p>
+  </div>
+
+  <div class="usuario-header">
+
+    <div class="usuario-avatar">TL</div>
+
+    <div>
+      <strong id="nombreUsuario">Usuario</strong>
+      <small id="rolUsuario"></small>
+    </div>
+
+  </div>
+
+</header>
+
+      <section class="dashboard-panel">
+
+        
+<div class="tabla-encabezado">
+
+  <div>
+    <span class="panel-etiqueta">
+      HISTORIAL DE OPERACIONES
+    </span>
+
+    <h2>Registro de actividades</h2>
+
+    <span id="totalAuditoria">
+      0 registros
+    </span>
+  </div>
+
+  <button
+    type="button"
+    id="actualizarAuditoria"
+    class="btn-nuevo">
+    Actualizar registros
+  </button>
+
+</div>
+
+
+        
+<div class="auditoria-filtros">
+
+  <div class="auditoria-campo-busqueda">
+
+    <label for="buscarAuditoria">
+      Buscar registros
+    </label>
+
+    <input
+      type="search"
+      id="buscarAuditoria"
+      placeholder="Buscar responsable, acción, entidad o ID..."
+    >
+
+  </div>
+
+  <div class="auditoria-campo-filtro">
+
+    <label for="filtroEntidad">
+      Filtrar por entidad
+    </label>
+
+    <select id="filtroEntidad">
+      <option value="">Todas las entidades</option>
+      <option value="EQUIPO">Equipos</option>
+      <option value="USUARIO">Usuarios</option>
+      <option value="PRESTAMO">Préstamos</option>
+      <option value="INCIDENCIA">Incidencias</option>
+    </select>
+
+  </div>
+
+</div>
+
+
+        <div class="tabla-contenedor">
+          <table class="tabla-equipos">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Usuario responsable</th>
+                <th>Acción</th>
+                <th>Entidad</th>
+                <th>Registro ID</th>
+                <th>Detalles</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+
+            <tbody id="tablaAuditoria">
+              <tr>
+                <td colspan="7">
+                  Cargando auditoría...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p id="mensajeAuditoria"
+           class="mensaje-error"
+           role="alert"></p>
+
+      </section>
+
+    </main>
+  </div>
+
+
+<!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+
+<!-- SCRIPTS DEL MÓDULO DE AUDITORÍA -->
+<script src="js/api.js"></script>
+<script src="js/auditoria.js"></script>
+
+<!-- SCRIPTS DE ACCESIBILIDAD -->
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>
+

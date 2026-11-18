@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>TechLoan | Portal de usuario</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="portal-usuario portal-moderno">
+
+<div class="portal-layout">
+
+  <!-- MENÚ LATERAL -->
+  <aside class="portal-sidebar">
+
+    <div class="portal-sidebar-marca">
+      <span class="portal-logo">TL</span>
+
+      <div>
+        <h2>TechLoan</h2>
+        <p>Portal de usuarios</p>
+      </div>
+    </div>
+
+    <div class="portal-sidebar-navegacion">
+
+      <p class="portal-sidebar-etiqueta">
+        MENÚ PRINCIPAL
+      </p>
+
+      <nav class="portal-menu">
+
+        <button
+          type="button"
+          class="portal-menu-opcion activo"
+          data-seccion="inicio">
+          <span>⌂</span>
+          Inicio
+        </button>
+
+        <button
+          type="button"
+          class="portal-menu-opcion"
+          data-seccion="equipos">
+          <span>▣</span>
+          Equipos
+        </button>
+
+        <button
+          type="button"
+          class="portal-menu-opcion"
+          data-seccion="solicitudes">
+          <span>▤</span>
+          Solicitudes
+        </button>
+
+        <button
+          type="button"
+          class="portal-menu-opcion"
+          data-seccion="prestamos">
+          <span>⇄</span>
+          Mis préstamos
+        </button>
+
+      </nav>
+
+    </div>
+
+    <div class="portal-sidebar-inferior">
+      <span>TechLoan · Portal de usuario</span>
+    </div>
+
+  </aside>
+
+
+  <!-- ÁREA PRINCIPAL -->
+  <div class="portal-area-principal">
+
+    <!-- ENCABEZADO -->
+    <header class="portal-header">
+
+      <div class="portal-marca">
+        <span class="portal-logo">TL</span>
+
+        <div>
+          <h1>TechLoan</h1>
+          <p>Portal de estudiantes y docentes</p>
+        </div>
+      </div>
+
+      <div class="portal-header-acciones">
+
+        <div class="portal-perfil">
+          <span class="portal-avatar">TL</span>
+
+          <div>
+            <strong id="nombreUsuarioPortal">
+              Usuario
+            </strong>
+            <small>Mi espacio de trabajo</small>
+          </div>
+        </div>
+
+        <button
+          id="cerrarSesionPortal"
+          type="button"
+          class="portal-btn-secundario">
+          Cerrar sesión
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <main class="portal-contenedor">
+
+      <!-- ================================= -->
+      <!-- SECCIÓN 1: INICIO -->
+      <!-- ================================= -->
+
+      <div
+        id="seccionPortalInicio"
+        class="portal-vista activa">
+
+        <section class="portal-bienvenida">
+
+          <span class="portal-etiqueta">
+            MI ESPACIO TECNOLÓGICO
+          </span>
+
+          <h2>Bienvenido a TechLoan</h2>
+
+          <p>
+            Consulta los equipos disponibles,
+            tus préstamos activos y las alertas
+            de devolución desde un solo lugar.
+          </p>
+
+          <div class="portal-bienvenida-decoracion">
+            TL
+          </div>
+
+        </section>
+
+
+        <!-- TARJETAS DE RESUMEN -->
+        <section class="portal-resumen">
+
+          <article class="portal-tarjeta">
+
+            <div class="portal-tarjeta-superior">
+              <span class="portal-icono portal-icono-azul">
+                ▣
+              </span>
+
+              <span class="portal-categoria">
+                INVENTARIO
+              </span>
+            </div>
+
+            <h3>Equipos disponibles</h3>
+
+            <strong id="totalDisponibles">--</strong>
+
+            <p>Equipos listos para solicitar</p>
+
+          </article>
+
+
+          <article class="portal-tarjeta">
+
+            <div class="portal-tarjeta-superior">
+              <span class="portal-icono portal-icono-verde">
+                ⇄
+              </span>
+
+              <span class="portal-categoria">
+                MIS ACTIVIDADES
+              </span>
+            </div>
+
+            <h3>Mis préstamos activos</h3>
+
+            <strong id="totalMisPrestamos">--</strong>
+
+            <p>
+              Equipos que tienes actualmente
+              prestados
+            </p>
+
+          </article>
+
+        </section>
+
+
+        <!-- ALERTAS DE DEVOLUCIÓN -->
+        <section class="portal-seccion">
+
+          <div class="portal-titulo">
+            <div>
+              <span class="portal-panel-etiqueta">
+                NOTIFICACIONES
+              </span>
+
+              <h2>Alertas de devolución</h2>
+            </div>
+          </div>
+
+          <div
+            id="alertasPortal"
+            class="portal-alertas"
+            role="status"
+            aria-live="polite">
+
+            <p>Cargando alertas...</p>
+
+          </div>
+
+        </section>
+
+
+        <!-- EQUIPOS DISPONIBLES EN INICIO -->
+        <section class="portal-seccion">
+
+          <div class="portal-titulo">
+            <div>
+              <span class="portal-panel-etiqueta">
+                INVENTARIO DISPONIBLE
+              </span>
+
+              <h2>Equipos disponibles</h2>
+            </div>
+
+            <button
+              type="button"
+              class="portal-btn"
+              data-ir-seccion="equipos">
+              Ver todos
+            </button>
+          </div>
+
+          <div class="portal-tabla-contenedor">
+
+            <table class="portal-tabla">
+
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Equipo</th>
+                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+
+              <tbody id="tablaEquiposInicio">
+                <tr>
+                  <td colspan="5">
+                    Cargando equipos disponibles...
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </section>
+
+
+        <!-- PRÉSTAMOS ACTIVOS EN INICIO -->
+        <section class="portal-seccion">
+
+          <div class="portal-titulo">
+            <div>
+              <span class="portal-panel-etiqueta">
+                MIS ACTIVIDADES
+              </span>
+
+              <h2>Mis préstamos activos</h2>
+            </div>
+
+            <button
+              type="button"
+              class="portal-btn"
+              data-ir-seccion="prestamos">
+              Ver historial
+            </button>
+          </div>
+
+          <div class="portal-tabla-contenedor">
+
+            <table class="portal-tabla">
+
+              <thead>
+                <tr>
+                  <th>Equipo</th>
+                  <th>Fecha de préstamo</th>
+                  <th>Fecha límite</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+
+              <tbody id="tablaPrestamosInicio">
+                <tr>
+                  <td colspan="4">
+                    Cargando préstamos activos...
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- ================================= -->
+      <!-- SECCIÓN 2: EQUIPOS -->
+      <!-- ================================= -->
+
+      <div
+        id="seccionPortalEquipos"
+        class="portal-vista"
+        hidden>
+
+        <section class="portal-seccion">
+
+          <div class="portal-titulo">
+
+            <div>
+              <span class="portal-panel-etiqueta">
+                CATÁLOGO TECNOLÓGICO
+              </span>
+
+              <h2>Disponibilidad de equipos</h2>
+            </div>
+
+            <button
+              id="actualizarDisponibilidad"
+              type="button"
+              class="portal-btn">
+              Actualizar
+            </button>
+
+          </div>
+
+
+          <div class="portal-filtros">
+
+            <input
+              type="search"
+              id="buscarEquipoPortal"
+              placeholder="Buscar por código, nombre o marca">
+
+            <select id="estadoEquipoPortal">
+              <option value="">Todos los estados</option>
+              <option value="DISPONIBLE">Disponible</option>
+              <option value="PRESTADO">Prestado</option>
+              <option value="MANTENIMIENTO">
+                Mantenimiento
+              </option>
+              <option value="INACTIVO">Inactivo</option>
+            </select>
+
+            <button
+              id="filtrarEquiposPortal"
+              type="button"
+              class="portal-btn">
+              Buscar
+            </button>
+
+          </div>
+
+
+          <div class="portal-tabla-contenedor">
+
+            <table class="portal-tabla">
+
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Equipo</th>
+                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+
+              <tbody id="tablaDisponibilidad">
+                <tr>
+                  <td colspan="5">
+                    Cargando equipos...
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+
+
+          <div class="portal-paginacion">
+
+            <button
+              id="paginaAnteriorPortal"
+              type="button"
+              class="portal-btn-secundario">
+              Anterior
+            </button>
+
+            <span id="paginaActualPortal">
+              Página 1
+            </span>
+
+            <button
+              id="paginaSiguientePortal"
+              type="button"
+              class="portal-btn-secundario">
+              Siguiente
+            </button>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- ================================= -->
+      <!-- SECCIÓN 3: SOLICITUDES -->
+      <!-- ================================= -->
+
+      <div
+        id="seccionPortalSolicitudes"
+        class="portal-vista"
+        hidden>
+
+        <!-- SOLICITAR EQUIPO -->
+        <section class="portal-seccion">
+
+          <div class="portal-titulo">
+
+            <div>
+              <span class="portal-panel-etiqueta">
+                NUEVA SOLICITUD
+              </span>
+
+              <h2>Solicitar préstamo de equipo</h2>
+            </div>
+
+          </div>
+
+
+          <form id="formSolicitudPortal">
+
+            <div class="portal-filtros">
+
+              <div>
+                <label for="equipoSolicitudPortal">
+                  Equipo disponible
+                </label>
+
+                <select
+                  id="equipoSolicitudPortal"
+                  required>
+                  <option value="">
+                    Seleccione un equipo
+                  </option>
+                </select>
+              </div>
+
+
+              <div>
+                <label for="fechaSolicitudPortal">
+                  Fecha límite solicitada
+                </label>
+
+                <input
+                  type="datetime-local"
+                  id="fechaSolicitudPortal"
+                  required>
+              </div>
+
+            </div>
+
+
+            <div>
+              <label for="motivoSolicitudPortal">
+                Motivo de la solicitud
+              </label>
+
+              <textarea
+                id="motivoSolicitudPortal"
+                rows="3"
+                placeholder="Explique para qué necesita el equipo"
+              ></textarea>
+            </div>
+
+
+            <button
+              type="submit"
+              class="portal-btn">
+              Enviar solicitud
+            </button>
+
+            <p
+              id="mensajeSolicitudPortal"
+              role="status">
+            </p>
+
+          </form>
+
+        </section>
+
+
+        <!-- MIS SOLICITUDES -->
+        <section class="portal-seccion">
+
+          <div class="portal-titulo">
+
+            <div>
+              <span class="portal-panel-etiqueta">
+                SEGUIMIENTO DE SOLICITUDES
+              </span>
+
+              <h2>Mis solicitudes</h2>
+            </div>
+
+            <button
+              id="actualizarSolicitudesPortal"
+              type="button"
+              class="portal-btn">
+              Actualizar
+            </button>
+
+          </div>
+
+
+          <div class="portal-tabla-contenedor">
+
+            <table class="portal-tabla">
+
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Equipo</th>
+                  <th>Fecha solicitada</th>
+                  <th>Estado</th>
+                  <th>Motivo de rechazo</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+
+              <tbody id="tablaSolicitudesPortal">
+                <tr>
+                  <td colspan="6">
+                    Cargando solicitudes...
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- ================================= -->
+      <!-- SECCIÓN 4: MIS PRÉSTAMOS -->
+      <!-- ================================= -->
+
+      <div
+        id="seccionPortalPrestamos"
+        class="portal-vista"
+        hidden>
+
+        <section class="portal-seccion">
+
+          <div class="portal-titulo">
+
+            <div>
+              <span class="portal-panel-etiqueta">
+                HISTORIAL PERSONAL
+              </span>
+
+              <h2>Mis préstamos</h2>
+            </div>
+
+            <button
+              id="actualizarMisPrestamos"
+              type="button"
+              class="portal-btn">
+              Actualizar
+            </button>
+
+          </div>
+
+
+          <div class="portal-tabla-contenedor">
+
+            <table class="portal-tabla">
+
+              <thead>
+                <tr>
+                  <th>Equipo</th>
+                  <th>Fecha de préstamo</th>
+                  <th>Fecha límite</th>
+                  <th>Devolución</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+
+              <tbody id="tablaMisPrestamos">
+                <tr>
+                  <td colspan="5">
+                    Cargando préstamos...
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+
+
+
+  </div>
+
+</div>
+
+<!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+
+<!-- SCRIPTS DEL PORTAL -->
+<script src="js/api.js"></script>
+<script src="js/portal-usuario.js"></script>
+
+<!-- SCRIPTS DE ACCESIBILIDAD -->
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+
+</body>
+</html>

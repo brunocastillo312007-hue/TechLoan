@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>TechLoan - Equipos</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="dashboard-body dashboard-moderno equipos-moderno">
+  
+  <div class="app-layout" id="appLayout" hidden>
+
+<div id="modalEquipo" class="modal-overlay" hidden>
+
+  <section class="modal-contenido"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="tituloModal">
+
+    <div class="modal-encabezado">
+      <h2 id="tituloModal">Nuevo equipo</h2>
+
+      <button type="button"
+              id="cerrarModal"
+              class="btn-cerrar"
+              aria-label="Cerrar formulario">
+        ×
+      </button>
+    </div>
+
+    <form id="formEquipo">
+
+      <input type="hidden" id="equipoId">
+
+      <label for="equipoCodigo">Código *</label>
+      <input type="text" id="equipoCodigo"
+             maxlength="30" required>
+
+      <label for="equipoNombre">Nombre *</label>
+      <input type="text" id="equipoNombre"
+             maxlength="100" required>
+
+      <label for="equipoMarca">Marca</label>
+      <input type="text" id="equipoMarca"
+             maxlength="80">
+
+      <label for="equipoModelo">Modelo</label>
+      <input type="text" id="equipoModelo"
+             maxlength="80">
+
+      <label for="equipoSerie">Número de serie</label>
+      <input type="text" id="equipoSerie"
+             maxlength="100">
+
+      <p id="errorFormulario"
+         class="mensaje-error"
+         role="alert"></p>
+
+      <div class="modal-botones">
+        <button type="button"
+                id="cancelarEquipo"
+                class="btn-secundario">
+          Cancelar
+        </button>
+
+        <button type="submit" id="guardarEquipo">
+          Guardar equipo
+        </button>
+      </div>
+
+    </form>
+  </section>
+</div>
+
+    
+<aside class="sidebar">
+
+  <div class="sidebar-logo">
+    <span>TL</span>
+    <div>
+      <h2>TechLoan</h2>
+      <small>Gestión tecnológica</small>
+    </div>
+  </div>
+
+  <p class="sidebar-etiqueta">MENÚ PRINCIPAL</p>
+
+  <nav class="sidebar-menu">
+    <a href="dashboard.html">
+      <span class="menu-icono">▦</span>
+      Panel principal
+    </a>
+
+    <a href="equipos.html" class="activo">
+      <span class="menu-icono">▣</span>
+      Equipos
+    </a>
+
+    <a href="prestamos.html">
+      <span class="menu-icono">⇄</span>
+      Préstamos
+    </a>
+
+    <a href="reportes.html">
+      <span class="menu-icono">▥</span>
+      Reportes
+    </a>
+
+    <a href="incidencias.html">
+      <span class="menu-icono">⚑</span>
+      Incidencias
+    </a>
+
+    <a href="usuarios.html" id="menuUsuarios">
+      <span class="menu-icono">♙</span>
+      Usuarios
+    </a>
+
+
+<a href="solicitudes-registro.html"
+   id="menuSolicitudesRegistro">
+  <span class="menu-icono">✉</span>
+  Solicitudes de registro
+</a>
+
+    <a href="auditoria.html" id="menuAuditoria">
+      <span class="menu-icono">◷</span>
+      Auditoría
+    </a>
+  </nav>
+
+  <div class="sidebar-inferior">
+    <div class="sidebar-sistema">
+      <span class="sistema-indicador"></span>
+      Sistema TechLoan
+    </div>
+
+    <button id="cerrarSesion" class="btn-salir">
+      Cerrar sesión
+    </button>
+  </div>
+
+</aside>
+
+
+    <main class="main-content">
+
+      
+<header class="dashboard-header">
+
+  <div>
+    <span class="dashboard-etiqueta">
+      ADMINISTRACIÓN DE INVENTARIO
+    </span>
+
+    <h1>Gestión de equipos</h1>
+
+    <p>
+      Consulta, organiza y administra los equipos
+      tecnológicos de tu institución.
+    </p>
+  </div>
+
+  <div class="usuario-header">
+    <div class="usuario-avatar">TL</div>
+
+    <div>
+      <strong id="nombreUsuario">Usuario</strong>
+      <small id="rolUsuario"></small>
+    </div>
+  </div>
+
+</header>
+
+
+      <section class="dashboard-panel">
+
+        <div class="equipos-seccion-titulo">
+        <div>
+          <span class="panel-etiqueta">BÚSQUEDA AVANZADA</span>
+          <h2>Buscar equipos</h2>
+          <p>
+            Encuentra equipos mediante su nombre, código,
+            estado o marca.
+          </p>
+        </div>
+      </div>
+
+        <form id="formFiltros" class="filtros-equipos">
+
+          <input
+            type="text"
+            id="buscarEquipo"
+            placeholder="Buscar código o nombre"
+          >
+
+          <select id="filtroEstado">
+            <option value="">Todos los estados</option>
+            <option value="DISPONIBLE">Disponible</option>
+            <option value="PRESTADO">Prestado</option>
+            <option value="MANTENIMIENTO">Mantenimiento</option>
+            <option value="INACTIVO">Inactivo</option>
+          </select>
+
+          <input
+            type="text"
+            id="filtroMarca"
+            placeholder="Filtrar por marca"
+          >
+
+          <select id="ordenarEquipos">
+            <option value="id">Ordenar por ID</option>
+            <option value="nombre">Ordenar por nombre</option>
+            <option value="codigo">Ordenar por código</option>
+            <option value="marca">Ordenar por marca</option>
+          </select>
+
+          <select id="direccionOrden">
+            <option value="ASC">Ascendente</option>
+            <option value="DESC">Descendente</option>
+          </select>
+
+          <button type="submit">
+            Aplicar filtros
+          </button>
+
+          <button type="button" id="limpiarFiltros"
+                  class="btn-secundario">
+            Limpiar
+          </button>
+
+        </form>
+
+      </section>
+
+      <section class="dashboard-panel">
+
+        
+<div class="tabla-encabezado">
+  <div>
+  <span class="panel-etiqueta">INVENTARIO TECNOLÓGICO</span>
+  <h2>Listado de equipos</h2>
+  <span id="totalRegistros">0 registros</span>
+</div>
+
+  <button type="button"
+          id="btnNuevoEquipo"
+          class="btn-nuevo"
+          hidden>
+    + Nuevo equipo
+  </button>
+</div>
+
+
+        <div class="tabla-contenedor">
+
+          <table class="tabla-equipos">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Número de serie</th>
+                <th>Estado</th>
+                <th id="columnaAcciones">Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody id="tablaEquipos">
+              <tr>
+                <td colspan="6">Cargando equipos...</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="paginacion">
+          <button type="button" id="btnAnterior"
+                  class="btn-secundario">
+            Anterior
+          </button>
+
+          <span id="infoPagina">Página 1 de 1</span>
+
+          <button type="button" id="btnSiguiente"
+                  class="btn-secundario">
+            Siguiente
+          </button>
+        </div>
+
+        <p id="mensajeEquipos" class="mensaje-error"
+           role="alert"></p>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+<!-- MODAL DE RECUPERACIÓN DE EQUIPOS -->
+<div id="modalReparacion" class="modal-overlay" hidden>
+
+  <section class="modal-contenido"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="tituloReparacion">
+
+    <div class="modal-encabezado">
+      <h2 id="tituloReparacion">
+        Marcar equipo como reparado
+      </h2>
+
+      <button type="button"
+              id="cerrarModalReparacion"
+              class="btn-cerrar"
+              aria-label="Cerrar">
+        &times;
+      </button>
+    </div>
+
+    <p id="nombreEquipoReparacion"></p>
+
+    <form id="formReparacion">
+
+      <input type="hidden" id="equipoIdReparacion">
+
+      <label for="descripcionReparacion">
+        Descripción de la reparación
+      </label>
+
+      <textarea
+        id="descripcionReparacion"
+        rows="5"
+        maxlength="2000"
+        required
+        placeholder="Describe qué se reparó y cómo se comprobó el funcionamiento del equipo..."
+      ></textarea>
+
+      <p id="errorReparacion"
+         class="mensaje-error"
+         role="alert"></p>
+
+      <div class="modal-botones">
+
+        <button type="button"
+                id="cancelarReparacion"
+                class="btn-secundario">
+          Cancelar
+        </button>
+
+        <button type="submit"
+                id="guardarReparacion"
+                class="btn-guardar">
+          Confirmar reparación
+        </button>
+
+      </div>
+    </form>
+
+  </section>
+</div>
+
+  <script src="js/api.js"></script>
+  <script src="js/equipos.js"></script>
+
+
+<!-- MODAL DE HISTORIAL DEL EQUIPO -->
+
+<div id="modalHistorial" class="modal-overlay" hidden>
+
+  <section class="modal-contenido historial-modal"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="tituloHistorial">
+
+    <div class="modal-encabezado">
+      <h2 id="tituloHistorial">Historial del equipo</h2>
+
+      <button type="button"
+              id="cerrarModalHistorial"
+              class="btn-cerrar"
+              aria-label="Cerrar historial">
+        ×
+      </button>
+    </div>
+
+    <div class="historial-equipo-info">
+      <h3 id="historialNombreEquipo"></h3>
+      <p id="historialCodigoEquipo"></p>
+    </div>
+
+    <p id="mensajeHistorial" role="alert"></p>
+
+    <div id="listaHistorial"
+         class="historial-lista">
+    </div>
+
+    <div class="modal-botones">
+      <button type="button"
+              id="btnCerrarHistorial"
+              class="btn-secundario">
+        Cerrar
+      </button>
+    </div>
+
+  </section>
+</div>
+  <!-- PANEL UNIVERSAL DE ACCESIBILIDAD -->
+<div id="panelAccesibilidad"></div>
+<script src="js/panel-accesibilidad.js"></script>
+<script src="js/accesibilidad.js"></script>
+</body>
+</html>
