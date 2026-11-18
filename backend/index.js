@@ -16,8 +16,17 @@ const pool = require("./src/config/database");
 
 const app = express();
 
+const path = require("path");
+
 app.use(cors());
 app.use(express.json());
+
+// Ruta de los archivos del frontend
+const frontendPath = path.join(__dirname, "../frontend");
+
+// Servir HTML, CSS y JavaScript
+app.use(express.static(frontendPath));
+
 app.use("/api/equipos", equipoRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/usuarios", usuarioRoutes);
@@ -52,10 +61,18 @@ app.get("/api/test-db", async (req, res) => {
   }
 });
 
+
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(
-    `Servidor TechLoan ejecutándose en puerto ${PORT}`
-  );
-});
+// Iniciar el servidor cuando se ejecuta localmente
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(
+      `Servidor TechLoan ejecutándose en puerto ${PORT}`
+    );
+  });
+}
+
+// Exportar la aplicación Express para Vercel
+module.exports = app;
+
