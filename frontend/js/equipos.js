@@ -425,6 +425,25 @@ async function abrirHistorialEquipo(equipo) {
   document.getElementById("historialCodigoEquipo")
     .textContent = `Código: ${equipo.codigo}`;
 
+  
+document.getElementById("historialMarcaEquipo")
+  .textContent = equipo.marca ?? "No registrada";
+
+document.getElementById("historialModeloEquipo")
+  .textContent = equipo.modelo ?? "No registrado";
+
+document.getElementById("historialSerieEquipo")
+  .textContent = equipo.numero_serie ?? "No registrado";
+
+document.getElementById("historialEstadoEquipo")
+  .textContent = equipo.estado ?? "No disponible";
+
+document.getElementById("historialFechaRegistro")
+  .textContent = equipo.fecha_registro
+    ? formatearFechaHistorial(equipo.fecha_registro)
+    : "Fecha no disponible";
+
+
   lista.replaceChildren();
   mensaje.textContent = "Cargando historial...";
 
